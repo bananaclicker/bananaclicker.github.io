@@ -46,7 +46,7 @@ const a = {
   farms4: false,
 };
 
-function onClick() {
+function bananaClick() {
   if (paused == false) {
     clicks += 1 * multiplier;
   }
