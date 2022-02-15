@@ -15,10 +15,11 @@ var expPriceWorker = 0;
 var expPriceSuperWorker = 0;
 var expPriceFarm = 0;
 var settingsOpen = false;
-var difficulty = 2;
-var achievements = 0;
 var achTrackerOpen = false;
 var patchNotesOpen = false;
+var difficulty = 2;
+var achievements = 0;
+var colorMode = 0;
 var achSlot1 = true;
 var achSlot2 = true;
 var achSlot3 = true;
@@ -439,8 +440,8 @@ setInterval(function () {
       achievements++;
     }
     if (farms >= 75 && a.farms4 == false) {
-      ach("Obtain 75 Farms", "+250B Bananas");
-      clicks += 250000000000;
+      ach("Obtain 75 Farms", "+100M Bananas");
+      clicks += 100000000;
       a.farms4 = true;
       achievements++;
     }
@@ -658,17 +659,20 @@ function help() {
 }
 
 function settings() {
-  document.getElementById("save").style.top = "180px";
-  document.getElementById("cancel").style.top = "180px";
-  document.getElementById("areYouSure").style.display = "none";
   if (settingsOpen == false) {
     settingsOpen = true;
+    achTrackerOpen = false;
+    patchNotesOpen = false;
     paused = true;
     document.getElementById("shop").style.display = "none";
     document.getElementById("banana").style.display = "none";
     document.getElementById("clickCounter").style.display = "none";
     document.getElementById("divider2").style.display = "none";
+    document.getElementById("achTrackerMenu").style.display = "none";
+    document.getElementById("patchNotesMenu").style.display = "none";
+    document.getElementById("divider4").style.display = "none";
     document.getElementById("settingsMenu").style.display = "block";
+    document.getElementById("divider3").style.display = "block";
   } else if (settingsOpen == true) {
     settingsOpen = false;
     paused = false;
@@ -683,27 +687,27 @@ function settings() {
 function easy() {
   document.getElementById("easy").style.backgroundColor = "orange";
   document.getElementById("easy").style.color = "rgb(30,30,30)";
-  document.getElementById("normal").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("normal").style.backgroundColor = "transparent";
   document.getElementById("normal").style.color = "orange";
-  document.getElementById("hard").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("hard").style.backgroundColor = "transparent";
   document.getElementById("hard").style.color = "orange";
 }
 
 function normal() {
   document.getElementById("normal").style.backgroundColor = "orange";
   document.getElementById("normal").style.color = "rgb(30,30,30)";
-  document.getElementById("easy").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("easy").style.backgroundColor = "transparent";
   document.getElementById("easy").style.color = "orange";
-  document.getElementById("hard").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("hard").style.backgroundColor = "transparent";
   document.getElementById("hard").style.color = "orange";
 }
 
 function hard() {
   document.getElementById("hard").style.backgroundColor = "orange";
   document.getElementById("hard").style.color = "rgb(30,30,30)";
-  document.getElementById("normal").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("normal").style.backgroundColor = "transparent";
   document.getElementById("normal").style.color = "orange";
-  document.getElementById("easy").style.backgroundColor = "rgb(30,30,30)";
+  document.getElementById("easy").style.backgroundColor = "transparent";
   document.getElementById("easy").style.color = "orange";
 }
 
@@ -716,9 +720,11 @@ function areYouSure() {
     (document.getElementById("hard").style.backgroundColor == "orange" &&
       difficulty != 3)
   ) {
-    document.getElementById("save").style.top = "130px";
-    document.getElementById("cancel").style.top = "130px";
-    document.getElementById("areYouSure").style.display = "block";
+    alert(
+      "Changing this settings requires a restart. Please press OK below and then press [R] on your keyboard to confirm."
+    );
+  } else {
+    closeSettings();
   }
 }
 
@@ -729,7 +735,7 @@ function areYouSureCancel() {
 }
 
 function keyPressed(e) {
-  if ((e.key = "ENTER" && settingsOpen == true)) {
+  if ((e.key = "R" && settingsOpen == true)) {
     saveSettings();
   }
 }
@@ -801,23 +807,23 @@ function closeSettings() {
   if (difficulty == 1) {
     document.getElementById("easy").style.backgroundColor = "orange";
     document.getElementById("easy").style.color = "rgb(30,30,30)";
-    document.getElementById("normal").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("normal").style.backgroundColor = "transparent";
     document.getElementById("normal").style.color = "orange";
-    document.getElementById("hard").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("hard").style.backgroundColor = "transparent";
     document.getElementById("hard").style.color = "orange";
   } else if (difficulty == 2) {
     document.getElementById("normal").style.backgroundColor = "orange";
     document.getElementById("normal").style.color = "rgb(30,30,30)";
-    document.getElementById("easy").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("easy").style.backgroundColor = "transparent";
     document.getElementById("easy").style.color = "orange";
-    document.getElementById("hard").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("hard").style.backgroundColor = "transparent";
     document.getElementById("hard").style.color = "orange";
   } else if (difficulty == 3) {
     document.getElementById("hard").style.backgroundColor = "orange";
     document.getElementById("hard").style.color = "rgb(30,30,30)";
-    document.getElementById("normal").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("normal").style.backgroundColor = "transparent";
     document.getElementById("normal").style.color = "orange";
-    document.getElementById("easy").style.backgroundColor = "rgb(30,30,30)";
+    document.getElementById("easy").style.backgroundColor = "transparent";
     document.getElementById("easy").style.color = "orange";
   }
   settings();
@@ -826,12 +832,16 @@ function closeSettings() {
 function achTracker() {
   if (achTrackerOpen == false) {
     achTrackerOpen = true;
+    settingsOpen = false;
+    patchNotesOpen = false;
     paused = true;
     document.getElementById("shop").style.display = "none";
     document.getElementById("banana").style.display = "none";
     document.getElementById("clickCounter").style.display = "none";
     document.getElementById("divider2").style.display = "none";
     document.getElementById("divider3").style.display = "none";
+    document.getElementById("patchNotesMenu").style.display = "none";
+    document.getElementById("settingsMenu").style.display = "none";
     document.getElementById("divider4").style.display = "block";
     document.getElementById("achTrackerMenu").style.display = "block";
   } else if (achTrackerOpen == true) {
@@ -850,12 +860,18 @@ function achTracker() {
 function patchNotes() {
   if (patchNotesOpen == false) {
     patchNotesOpen = true;
+    settingsOpen = false;
+    achTrackerOpen = false;
     paused = true;
     document.getElementById("shop").style.display = "none";
     document.getElementById("banana").style.display = "none";
     document.getElementById("clickCounter").style.display = "none";
     document.getElementById("divider2").style.display = "none";
+    document.getElementById("settingsMenu").style.display = "none";
+    document.getElementById("achTrackerMenu").style.display = "none";
+    document.getElementById("divider4").style.display = "none";
     document.getElementById("patchNotesMenu").style.display = "block";
+    document.getElementById("divider3").style.display = "block";
   } else if (patchNotesOpen == true) {
     patchNotesOpen = false;
     paused = false;
@@ -865,4 +881,19 @@ function patchNotes() {
     document.getElementById("divider2").style.display = "block";
     document.getElementById("patchNotesMenu").style.display = "none";
   }
+}
+
+function lightMode() {
+  document.getElementById("stylesheet").href = "lightmode.css";
+  document.getElementById("light").style.backgroundColor = "orange";
+  document.getElementById("light").style.color = "rgb(30,30,30)";
+  document.getElementById("dark").style.backgroundColor = "transparent";
+  document.getElementById("dark").style.color = "orange";
+}
+function darkMode() {
+  document.getElementById("stylesheet").href = "darkmode.css";
+  document.getElementById("dark").style.backgroundColor = "orange";
+  document.getElementById("dark").style.color = "rgb(30,30,30)";
+  document.getElementById("light").style.backgroundColor = "transparent";
+  document.getElementById("light").style.color = "orange";
 }
