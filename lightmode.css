@@ -370,7 +370,7 @@ button#pause {
 #achievement span,
 #achievement2 span,
 #achievement3 span {
-  color: white;
+  color: black;
 }
 #achTrackerMenu {
   position: absolute;
@@ -443,7 +443,7 @@ button#pause {
   color: orange;
 }
 .achPreview span {
-  color: white;
+  color: black;
 }
 *::-webkit-scrollbar {
   width: 12px;
