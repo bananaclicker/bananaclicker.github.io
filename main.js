@@ -897,3 +897,228 @@ function darkMode() {
   document.getElementById("light").style.backgroundColor = "transparent";
   document.getElementById("light").style.color = "orange";
 }
+
+function downloadSave() {
+  var data =
+    clicks +
+    "\n" +
+    upgCost +
+    "\n" +
+    workerCost +
+    "\n" +
+    superWorkerCost +
+    "\n" +
+    farmCost +
+    "\n" +
+    multiplier +
+    "\n" +
+    workers +
+    "\n" +
+    superWorkers +
+    "\n" +
+    farms +
+    "\n" +
+    expPriceMultiplier +
+    "\n" +
+    expPriceWorker +
+    "\n" +
+    expPriceSuperWorker +
+    "\n" +
+    expPriceFarm +
+    "\n" +
+    achievements +
+    "\n" +
+    a.banana1 +
+    "\n" +
+    a.banana2 +
+    "\n" +
+    a.banana3 +
+    "\n" +
+    a.banana4 +
+    "\n" +
+    a.multiplier1 +
+    "\n" +
+    a.multiplier2 +
+    "\n" +
+    a.multiplier3 +
+    "\n" +
+    a.multiplier4 +
+    "\n" +
+    a.workers1 +
+    "\n" +
+    a.workers2 +
+    "\n" +
+    a.workers3 +
+    "\n" +
+    a.workers4 +
+    "\n" +
+    a.superWorkers1 +
+    "\n" +
+    a.superWorkers2 +
+    "\n" +
+    a.superWorkers3 +
+    "\n" +
+    a.superWorkers4 +
+    "\n" +
+    a.farms1 +
+    "\n" +
+    a.farms2 +
+    "\n" +
+    a.farms3 +
+    "\n" +
+    a.farms4;
+
+  var download = document.createElement("a");
+  download.style.display = "none";
+  download.setAttribute(
+    "href",
+    "data:text/plain;charset=utf-8," + encodeURIComponent(data)
+  );
+  download.setAttribute("download", "BC-save");
+  document.body.appendChild(download);
+  download.click();
+  document.body.removeChild(download);
+}
+
+function uploadSave() {
+  var upload = document.createElement("input");
+  upload.style.display = "none";
+  upload.setAttribute("type", "file");
+  document.body.appendChild(upload);
+  upload.click();
+  upload.addEventListener(
+    "change",
+    function (e) {
+      console.log(upload.files);
+      const reader = new FileReader();
+      reader.onload = function () {
+        const line = reader.result.split("\n");
+        try {
+          if (line[14] == "false") {
+            a.banana1 = false;
+          } else {
+            a.banana1 = true;
+          }
+          if (line[15] == "false") {
+            a.banana2 = false;
+          } else {
+            a.banana2 = true;
+          }
+          if (line[16] == "false") {
+            a.banana3 = false;
+          } else {
+            a.banana3 = true;
+          }
+          if (line[17] == "false") {
+            a.banana4 = false;
+          } else {
+            a.banana4 = true;
+          }
+          if (line[18] == "false") {
+            a.multiplier1 = false;
+          } else {
+            a.multiplier1 = true;
+          }
+          if (line[19] == "false") {
+            a.multiplier2 = false;
+          } else {
+            a.multiplier2 = true;
+          }
+          if (line[20] == "false") {
+            a.multiplier3 = false;
+          } else {
+            a.multiplier3 = true;
+          }
+          if (line[21] == "false") {
+            a.multiplier4 = false;
+          } else {
+            a.multiplier4 = true;
+          }
+          if (line[22] == "false") {
+            a.workers1 = false;
+          } else {
+            a.workers1 = true;
+          }
+          if (line[23] == "false") {
+            a.workers2 = false;
+          } else {
+            a.workers2 = true;
+          }
+          if (line[24] == "false") {
+            a.workers3 = false;
+          } else {
+            a.workers3 = true;
+          }
+          if (line[25] == "false") {
+            a.workers4 = false;
+          } else {
+            a.workers4 = true;
+          }
+          if (line[26] == "false") {
+            a.superWorkers1 = false;
+          } else {
+            a.superWorkers1 = true;
+          }
+          if (line[27] == "false") {
+            a.superWorkers2 = false;
+          } else {
+            a.superWorkers2 = true;
+          }
+          if (line[28] == "false") {
+            a.superWorkers3 = false;
+          } else {
+            a.superWorkers3 = true;
+          }
+          if (line[29] == "false") {
+            a.superWorkers4 = false;
+          } else {
+            a.superWorkers4 = true;
+          }
+          if (line[30] == "false") {
+            a.farms1 = false;
+          } else {
+            a.farms1 = true;
+          }
+          if (line[31] == "false") {
+            a.farms2 = false;
+          } else {
+            a.farms2 = true;
+          }
+          if (line[32] == "false") {
+            a.farms3 = false;
+          } else {
+            a.farms3 = true;
+          }
+          if (line[33] == "false") {
+            a.farms4 = false;
+          } else {
+            a.farms4 = true;
+          }
+          clicks = parseInt(line[0]);
+          upgCost = parseInt(line[1]);
+          workerCost = parseInt(line[2]);
+          superWorkerCost = parseInt(line[3]);
+          farmCost = parseInt(line[4]);
+          multiplier = parseInt(line[5]);
+          workers = parseInt(line[6]);
+          superWorkers = parseInt(line[7]);
+          farms = parseInt(line[8]);
+          expPriceMultiplier = parseInt(line[9]);
+          expPriceWorker = parseInt(line[10]);
+          expPriceSuperWorker = parseInt(line[11]);
+          expPriceFarm = parseInt(line[12]);
+          achievements = parseInt(line[13]);
+        } catch {
+          alert(
+            "There was an error while converting the file into data for the game. This is most likely because the file may be old and not correctly formatted, or there is an error in the file."
+          );
+        }
+      };
+      reader.onerror = function (e) {
+        alert(e.target.error.name);
+      };
+      reader.readAsText(upload.files[0]);
+    },
+    false
+  );
+}
