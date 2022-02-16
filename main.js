@@ -1000,6 +1000,16 @@ function uploadSave() {
       const reader = new FileReader();
       reader.onload = function () {
         const line = reader.result.split("\n");
+        if (reader.result.split("\n").map(function () {}).length != 36) {
+          alert(
+            "This file is from an outdated version of Banana Clicker, so some things may not work correctly. This file has " +
+              reader.result
+                .split("\n")
+                .map(function () {})
+                .length.toString() +
+              " lines. Updated/current files have 36 lines."
+          );
+        }
         try {
           if (line[14] == "false") {
             a.banana1 = false;
