@@ -979,7 +979,7 @@ function downloadSave() {
   download.style.display = "none";
   download.setAttribute(
     "href",
-    "data:text/plain;charset=utf-8," + encodeURIComponent(data)
+    "data:text/file;charset=utf-8," + encodeURIComponent(data)
   );
   download.setAttribute("download", "BC-save");
   document.body.appendChild(download);
