@@ -202,8 +202,36 @@ button#pause {
   border-radius: 50%;
   width: auto;
   height: auto;
-  top: 7px;
+  top: 8px;
   right: 65px;
+  font-size: 40px;
+  cursor: pointer;
+}
+#downloadBtn {
+  position: absolute;
+  font-family: "Material Icons";
+  color: orange;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  top: 10px;
+  right: 165px;
+  font-size: 40px;
+  cursor: pointer;
+}
+#uploadBtn {
+  position: absolute;
+  font-family: "Material Icons";
+  color: orange;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  top: 10px;
+  right: 115px;
   font-size: 40px;
   cursor: pointer;
 }
