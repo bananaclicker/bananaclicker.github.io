@@ -18,6 +18,10 @@
     <div id="patchNotesMenu">
       <h1>PATCH NOTES</h1>
       <div id="patchNotesDivider"></div>
+      <p>2/15/22 @ 8:45 PM<br><br>
+        - New feature: Saving<br>
+        - Game can now be locally saved in a file that can be uploaded to resume progress.<br>
+      </p>
       <p>2/15/22 @ 4:00 PM<br><br>
         - Fixed menus overlapping (glitch)<br>
         - Dark & Light Mode added (in settings)<br>
@@ -56,6 +60,8 @@
     </div>
     <div id="settings" title="Settings" onclick="settings()">settings</div>
     <div id="achTracker" title="Achievements" onclick="achTracker()">stars</div>
+    <div id="downloadBtn" title="Save & Download Game to File" onclick="downloadSave()">download</div>
+    <div id="uploadBtn" title="Upload Saved Game File" onclick="uploadSave()">upload</div>
     <div id="achTrackerMenu">
       <h1>ACHIEVEMENTS (<span id="achCount">0</span>/20)</h1>
       <div id="achDivider"></div>
@@ -189,7 +195,6 @@
         </p>
       </div>
       </div>
-
     </div>
           <div id="divider4"></div>
     <div id="settingsMenu">
