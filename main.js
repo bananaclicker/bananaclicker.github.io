@@ -23,6 +23,7 @@ var colorMode = 0;
 var achSlot1 = true;
 var achSlot2 = true;
 var achSlot3 = true;
+var colorMode = "dark";
 
 const a = {
   banana1: false,
@@ -889,6 +890,7 @@ function lightMode() {
   document.getElementById("light").style.color = "rgb(30,30,30)";
   document.getElementById("dark").style.backgroundColor = "transparent";
   document.getElementById("dark").style.color = "orange";
+  colorMode = "light";
 }
 function darkMode() {
   document.getElementById("stylesheet").href = "darkmode.css";
@@ -896,6 +898,7 @@ function darkMode() {
   document.getElementById("dark").style.color = "rgb(30,30,30)";
   document.getElementById("light").style.backgroundColor = "transparent";
   document.getElementById("light").style.color = "orange";
+  colorMode = "dark";
 }
 
 function downloadSave() {
@@ -966,7 +969,11 @@ function downloadSave() {
     "\n" +
     a.farms3 +
     "\n" +
-    a.farms4;
+    a.farms4 +
+    "\n" +
+    colorMode +
+    "\n" +
+    difficulty;
 
   var download = document.createElement("a");
   download.style.display = "none";
@@ -1093,6 +1100,51 @@ function uploadSave() {
             a.farms4 = false;
           } else {
             a.farms4 = true;
+          }
+          if (line[34] == "dark") {
+            document.getElementById("stylesheet").href = "darkmode.css";
+            document.getElementById("dark").style.backgroundColor = "orange";
+            document.getElementById("dark").style.color = "rgb(30,30,30)";
+            document.getElementById("light").style.backgroundColor =
+              "transparent";
+            document.getElementById("light").style.color = "orange";
+            colorMode = "dark";
+          } else {
+            document.getElementById("stylesheet").href = "lightmode.css";
+            document.getElementById("light").style.backgroundColor = "orange";
+            document.getElementById("light").style.color = "rgb(30,30,30)";
+            document.getElementById("dark").style.backgroundColor =
+              "transparent";
+            document.getElementById("dark").style.color = "orange";
+            colorMode = "light";
+          }
+          if (line[35] == 1) {
+            document.getElementById("easy").style.backgroundColor = "orange";
+            document.getElementById("easy").style.color = "rgb(30,30,30)";
+            document.getElementById("normal").style.backgroundColor =
+              "transparent";
+            document.getElementById("normal").style.color = "orange";
+            document.getElementById("hard").style.backgroundColor =
+              "transparent";
+            document.getElementById("hard").style.color = "orange";
+          } else if (line[35] == 2) {
+            document.getElementById("normal").style.backgroundColor = "orange";
+            document.getElementById("normal").style.color = "rgb(30,30,30)";
+            document.getElementById("easy").style.backgroundColor =
+              "transparent";
+            document.getElementById("easy").style.color = "orange";
+            document.getElementById("hard").style.backgroundColor =
+              "transparent";
+            document.getElementById("hard").style.color = "orange";
+          } else {
+            document.getElementById("hard").style.backgroundColor = "orange";
+            document.getElementById("hard").style.color = "rgb(30,30,30)";
+            document.getElementById("normal").style.backgroundColor =
+              "transparent";
+            document.getElementById("normal").style.color = "orange";
+            document.getElementById("easy").style.backgroundColor =
+              "transparent";
+            document.getElementById("easy").style.color = "orange";
           }
           clicks = parseInt(line[0]);
           upgCost = parseInt(line[1]);
