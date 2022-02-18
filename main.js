@@ -233,7 +233,11 @@ setInterval(function () {
     document.getElementById("workerCost").innerHTML = abbreviate(workerCost);
     document.getElementById("superWorkerCost").innerHTML =
       abbreviate(superWorkerCost);
-    document.getElementById("bundleCost").innerHTML = abbreviate(bundle.cost);
+    if (bundle.cost != 0) {
+      document.getElementById("bundleCost").innerHTML = abbreviate(bundle.cost);
+    } else {
+      document.getElementById("bundleCost").innerHTML = "";
+    }
     document.getElementById("farmCost").innerHTML = abbreviate(farmCost);
     document.getElementById("currentMultiplier").innerHTML = multiplier;
     document.getElementById("nextMultiplier").innerHTML = multiplier + 1;
