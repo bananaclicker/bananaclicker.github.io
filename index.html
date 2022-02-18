@@ -18,6 +18,10 @@
     <div id="patchNotesMenu">
       <h1>PATCH NOTES</h1>
       <div id="patchNotesDivider"></div>
+      <p>2/17/22 @ 10:00 PM<br><br>
+        - New shop item: Bundles<br>
+        - Bundles become available every 2 minutes, they are value packs with items and prices depending on the items you currently have. Lots of randomness is involved.
+      </p>
       <p>2/16/22 @ 2:00 PM<br><br>
         - New Saving feature now also saves color mode (dark/light) and difficulty.<br>
       </p>
@@ -290,6 +294,10 @@
           <span id="nextFarm">1</span><br /><span class="price"
             >&#127820;<span id="farmCost">60k</span>&nbsp;</span
           >
+        </button>
+        <button id="bundle" onclick="buyBundle()">
+          Bundle<span id="bundleItems"><br><span style="color:red">Unavailable</span></span> <br /><span class="price"
+            >&#127820;<span id="bundleCost"></span>&nbsp;
         </button>
       </span>
       <br />
