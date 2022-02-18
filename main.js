@@ -24,6 +24,15 @@ var achSlot1 = true;
 var achSlot2 = true;
 var achSlot3 = true;
 var colorMode = "dark";
+var bundleAvailable = false;
+
+const bundle = {
+  multipliers: 0,
+  workers: 0,
+  superWorkers: 0,
+  farms: 0,
+  cost: 0,
+};
 
 const a = {
   banana1: false,
@@ -73,6 +82,14 @@ function abbreviate(x) {
   }
   return y;
 }
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+setInterval(function () {
+  newBundle();
+}, 90000);
 
 function ach(title, reward) {
   if (achSlot1 == true) {
@@ -630,6 +647,73 @@ function spendAnimation(price) {
     clearInterval(interval);
     document.body.removeChild(elem);
   }, 1000);
+}
+
+function newBundle() {
+  var value = random(2, 4);
+  bundle.multipliers = Math.round(random(multiplier / 100, multiplier / 75));
+  bundle.workers = Math.round(random(workers / 100, workers / 75));
+  bundle.superWorkers = Math.round(
+    random(superWorkers / 100, superWorkers / 75)
+  );
+  bundle.farms = Math.round(random(farms / 100, farms / 75));
+  if (
+    bundle.multipliers == 0 &&
+    bundle.workers == 0 &&
+    bundle.superWorkers == 0 &&
+    bundle.farms == 0
+  ) {
+    return;
+  } else {
+    document.getElementById("bundleItems").innerHTML = "";
+    var bundleAvailable = true;
+    if (bundle.multipliers != 0) {
+      document.getElementById("bundleItems").innerHTML +=
+        "<br>Multiplier: +" + bundle.multipliers + "x";
+      bundle.cost += bundle.multipliers * upgCost;
+    }
+    if (bundle.workers != 0) {
+      document.getElementById("bundleItems").innerHTML +=
+        "<br>Workers: +" + bundle.workers;
+      bundle.cost += bundle.workers * workerCost;
+    }
+    if (bundle.superWorkers != 0) {
+      document.getElementById("bundleItems").innerHTML +=
+        "<br>Super Workers: +" + bundle.superWorkers;
+      bundle.cost += bundle.superWorkers * superWorkerCost;
+    }
+    if (bundle.farms != 0) {
+      document.getElementById("bundleItems").innerHTML +=
+        "<br>Farms: +" + bundle.farms;
+      bundle.cost += bundle.farms * farmCost;
+    }
+    bundle.cost /= value;
+    bundle.cost = Math.round(bundle.cost);
+    document.getElementById("bundleCost").innerHTML = abbreviate(bundle.cost);
+  }
+}
+
+function buyBundle() {
+  if (paused == false) {
+    if (clicks >= bundle.cost && bundleAvailable == true) {
+      clicks -= bundle.cost;
+      multiplier += bundle.multipliers;
+      workers += bundle.workers;
+      superWorkers += bundle.superWorkers;
+      farms += bundle.farms;
+      bundle.multipliers = 0;
+      bundle.workers = 0;
+      bundle.superWorkers = 0;
+      bundle.farms = 0;
+      spendAnimation(bundle.cost);
+      bundle.cost = 0;
+      document.getElementById("bundleItems").innerHTML =
+        "<span style='color:red'><br>Unavailable</span>";
+      bundleAvailable = false;
+    } else if (clicks < bundle.cost && bundleAvailable == true) {
+      notEnoughBananas();
+    }
+  }
 }
 
 function notEnoughBananas() {
