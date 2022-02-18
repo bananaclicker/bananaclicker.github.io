@@ -457,6 +457,10 @@ button#pause {
   background: orange;
   border-radius: 20px;
 }
+button#bundle {
+  color: lime;
+  border: 4px solid lime;
+}
 /* #banana,
 #clickCounter,
 #shop,
