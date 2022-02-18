@@ -656,12 +656,12 @@ function spendAnimation(price) {
 
 function newBundle() {
   var value = random(2, 4);
-  bundle.multipliers = Math.round(random(multiplier / 100, multiplier / 75));
-  bundle.workers = Math.round(random(workers / 100, workers / 75));
+  bundle.multipliers = Math.round(random(multiplier / 100, multiplier / 50));
+  bundle.workers = Math.round(random(workers / 100, workers / 50));
   bundle.superWorkers = Math.round(
-    random(superWorkers / 100, superWorkers / 75)
+    random(superWorkers / 100, superWorkers / 50)
   );
-  bundle.farms = Math.round(random(farms / 100, farms / 75));
+  bundle.farms = Math.round(random(farms / 100, farms / 50));
   if (
     bundle.multipliers == 0 &&
     bundle.workers == 0 &&
