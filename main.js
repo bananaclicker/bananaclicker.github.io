@@ -666,7 +666,7 @@ function newBundle() {
     return;
   } else {
     document.getElementById("bundleItems").innerHTML = "";
-    var bundleAvailable = true;
+    bundleAvailable = true;
     if (bundle.multipliers != 0) {
       document.getElementById("bundleItems").innerHTML +=
         "<br>Multiplier: +" + bundle.multipliers + "x";
@@ -701,10 +701,6 @@ function buyBundle() {
       workers += bundle.workers;
       superWorkers += bundle.superWorkers;
       farms += bundle.farms;
-      bundle.multipliers = 0;
-      bundle.workers = 0;
-      bundle.superWorkers = 0;
-      bundle.farms = 0;
       spendAnimation(bundle.cost);
       bundle.cost = 0;
       document.getElementById("bundleItems").innerHTML =
