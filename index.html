@@ -16,8 +16,15 @@
       <i>article</i>
     </div>
     <div id="patchNotesMenu">
-      <h1>PATCH NOTES</h1>
+      <h1>NEW UPDATE!</h1>
       <div id="patchNotesDivider"></div>
+      <p>(Click the 2nd button at the top of the screen to close this menu)</p>
+      <p>2/19/22 @ 7:45 PM<br><br>
+        - New feature: Battles<br>
+        - Unlocked at 100K bananas<br>
+        - Battle AI opponents with an aim-trainer-like game and bet shop items to win or lose them. <br>
+        - Many bug fixes, including buttons at the top of the screen having an inaccurate hitbox (fixed)<br>
+      </p>
       <p>2/18/22 @ 5:00 PM<br><br>
         - Bundles have been reworked, many glitches are fixed<br>
       </p>
@@ -72,6 +79,7 @@
     <div id="achTracker" title="Achievements" onclick="achTracker()">stars</div>
     <div id="downloadBtn" title="Save & Download Game to File" onclick="downloadSave()">download</div>
     <div id="uploadBtn" title="Upload Saved Game File" onclick="uploadSave()">upload</div>
+    <div id="attackBtn" title="Attack a Player" onclick="attack()"><img src="attackBtn.png" id="attackImg"></div>
     <div id="achTrackerMenu">
       <h1>ACHIEVEMENTS (<span id="achCount">0</span>/20)</h1>
       <div id="achDivider"></div>
@@ -85,7 +93,7 @@
       <div class="achPreview" id="banana2">
         <p>
         <b>Reach 100k Bananas</b>
-        <br /><b>Reward: </b><span>+3 Super Workers</span>
+        <br /><b>Reward: </b><span>Unlock Battles</span>
         </p>
       </div><br>
       <div class="achPreview" id="banana3">
@@ -253,9 +261,34 @@
       <button id="cancel" onclick="closeSettings()" title="Close">
         <i>close</i>
       </button>
-
     </div>
-
+    <div id="attackMenu">
+      <h1>ATTACK</h1>
+      <div id="attackMenuDivider"></div>
+      <h3><u>Place your Bets</u></h3>
+      <h4>Multipliers: <input type="text" id="multiplierBet"></h4>
+      <h4>Workers: <input type="text" id="workerBet"></h4>
+      <h4>Super Workers: <input type="text" id="superWorkerBet"></h4>
+      <h4>Farms: <input type="text" id="farmBet"></h4>
+      <button id="attackBet" onclick="attackBet()">SUBMIT</button>
+    </div>
+    <div id="attackDialogue">
+      <h3 id="generatingOpponent">Generating opponent...</h3>
+      <h3 id="startingBattle">Starting battle...</h3>
+    </div>
+    <div id="battle">
+      <div id="timer">0:20</div>
+      <h3 id="battlePrompt">Click as many bananas as you can!</h3>
+      <h1 id="countdown">3</h1>
+    </div>
+    <div id="battleEndScreen">
+      <h1 id="result"></h1>
+      <h3 style="position: relative; bottom: 20px;" id="battleScores"></h3>
+      <h3 id="gainOrLossMsg"></h3>
+      <h3 id="gainOrLoss"></h3>
+      <button onclick="closeBattle()">CLOSE</button>
+    </div>
+    <div id="divider5"></div>
     <div id="centerAlignTool"></div>
     <h1 id="header">BANANA CLICKER</h1>
     <div id="divider"></div>
