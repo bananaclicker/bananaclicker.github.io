@@ -30,8 +30,6 @@ var superWorkerBet = 0;
 var farmBet = 0;
 var battleScore = 0;
 
-document.addEventListener("keypress", keyPressed);
-
 const bundle = {
   multipliers: 0,
   workers: 0,
@@ -822,23 +820,13 @@ function areYouSure() {
     (document.getElementById("hard").style.backgroundColor == "orange" &&
       difficulty != 3)
   ) {
-    alert(
-      "Changing this settings requires a restart. Please press OK below and then press [R] on your keyboard to confirm."
-    );
-  } else {
-    closeSettings();
-  }
-}
-
-function areYouSureCancel() {
-  document.getElementById("save").style.top = "180px";
-  document.getElementById("cancel").style.top = "180px";
-  document.getElementById("areYouSure").style.display = "none";
-}
-
-function keyPressed(e) {
-  if ((e.key = "R" && settingsOpen == true)) {
-    saveSettings();
+    if (
+      confirm(
+        "Changing this settings requires a restart. Press 'OK' below to continue or press 'Cancel' to cancel this action."
+      )
+    ) {
+      saveSettings();
+    }
   }
 }
 
