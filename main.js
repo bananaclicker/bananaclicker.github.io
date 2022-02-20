@@ -759,28 +759,30 @@ function help() {
 }
 
 function settings() {
-  if (settingsOpen == false) {
-    settingsOpen = true;
-    achTrackerOpen = false;
-    patchNotesOpen = false;
-    paused = true;
-    document.getElementById("shop").style.display = "none";
-    document.getElementById("banana").style.display = "none";
-    document.getElementById("clickCounter").style.display = "none";
-    document.getElementById("divider2").style.display = "none";
-    document.getElementById("achTrackerMenu").style.display = "none";
-    document.getElementById("patchNotesMenu").style.display = "none";
-    document.getElementById("divider4").style.display = "none";
-    document.getElementById("settingsMenu").style.display = "block";
-    document.getElementById("divider3").style.display = "block";
-  } else if (settingsOpen == true) {
-    settingsOpen = false;
-    paused = false;
-    document.getElementById("shop").style.display = "block";
-    document.getElementById("banana").style.display = "block";
-    document.getElementById("clickCounter").style.display = "block";
-    document.getElementById("divider2").style.display = "block";
-    document.getElementById("settingsMenu").style.display = "none";
+  if (battling == false) {
+    if (settingsOpen == false) {
+      settingsOpen = true;
+      achTrackerOpen = false;
+      patchNotesOpen = false;
+      paused = true;
+      document.getElementById("shop").style.display = "none";
+      document.getElementById("banana").style.display = "none";
+      document.getElementById("clickCounter").style.display = "none";
+      document.getElementById("divider2").style.display = "none";
+      document.getElementById("achTrackerMenu").style.display = "none";
+      document.getElementById("patchNotesMenu").style.display = "none";
+      document.getElementById("divider4").style.display = "none";
+      document.getElementById("settingsMenu").style.display = "block";
+      document.getElementById("divider3").style.display = "block";
+    } else if (settingsOpen == true) {
+      settingsOpen = false;
+      paused = false;
+      document.getElementById("shop").style.display = "block";
+      document.getElementById("banana").style.display = "block";
+      document.getElementById("clickCounter").style.display = "block";
+      document.getElementById("divider2").style.display = "block";
+      document.getElementById("settingsMenu").style.display = "none";
+    }
   }
 }
 
@@ -930,56 +932,60 @@ function closeSettings() {
 }
 
 function achTracker() {
-  if (achTrackerOpen == false) {
-    achTrackerOpen = true;
-    settingsOpen = false;
-    patchNotesOpen = false;
-    paused = true;
-    document.getElementById("shop").style.display = "none";
-    document.getElementById("banana").style.display = "none";
-    document.getElementById("clickCounter").style.display = "none";
-    document.getElementById("divider2").style.display = "none";
-    document.getElementById("divider3").style.display = "none";
-    document.getElementById("patchNotesMenu").style.display = "none";
-    document.getElementById("settingsMenu").style.display = "none";
-    document.getElementById("divider4").style.display = "block";
-    document.getElementById("achTrackerMenu").style.display = "block";
-  } else if (achTrackerOpen == true) {
-    achTrackerOpen = false;
-    paused = false;
-    document.getElementById("shop").style.display = "block";
-    document.getElementById("banana").style.display = "block";
-    document.getElementById("clickCounter").style.display = "block";
-    document.getElementById("divider2").style.display = "block";
-    document.getElementById("divider3").style.display = "block";
-    document.getElementById("divider4").style.display = "none";
-    document.getElementById("achTrackerMenu").style.display = "none";
+  if (battling == false) {
+    if (achTrackerOpen == false) {
+      achTrackerOpen = true;
+      settingsOpen = false;
+      patchNotesOpen = false;
+      paused = true;
+      document.getElementById("shop").style.display = "none";
+      document.getElementById("banana").style.display = "none";
+      document.getElementById("clickCounter").style.display = "none";
+      document.getElementById("divider2").style.display = "none";
+      document.getElementById("divider3").style.display = "none";
+      document.getElementById("patchNotesMenu").style.display = "none";
+      document.getElementById("settingsMenu").style.display = "none";
+      document.getElementById("divider4").style.display = "block";
+      document.getElementById("achTrackerMenu").style.display = "block";
+    } else if (achTrackerOpen == true) {
+      achTrackerOpen = false;
+      paused = false;
+      document.getElementById("shop").style.display = "block";
+      document.getElementById("banana").style.display = "block";
+      document.getElementById("clickCounter").style.display = "block";
+      document.getElementById("divider2").style.display = "block";
+      document.getElementById("divider3").style.display = "block";
+      document.getElementById("divider4").style.display = "none";
+      document.getElementById("achTrackerMenu").style.display = "none";
+    }
   }
 }
 
 function patchNotes() {
-  if (patchNotesOpen == false) {
-    patchNotesOpen = true;
-    settingsOpen = false;
-    achTrackerOpen = false;
-    paused = true;
-    document.getElementById("shop").style.display = "none";
-    document.getElementById("banana").style.display = "none";
-    document.getElementById("clickCounter").style.display = "none";
-    document.getElementById("divider2").style.display = "none";
-    document.getElementById("settingsMenu").style.display = "none";
-    document.getElementById("achTrackerMenu").style.display = "none";
-    document.getElementById("divider4").style.display = "none";
-    document.getElementById("patchNotesMenu").style.display = "block";
-    document.getElementById("divider3").style.display = "block";
-  } else if (patchNotesOpen == true) {
-    patchNotesOpen = false;
-    paused = false;
-    document.getElementById("shop").style.display = "block";
-    document.getElementById("banana").style.display = "block";
-    document.getElementById("clickCounter").style.display = "block";
-    document.getElementById("divider2").style.display = "block";
-    document.getElementById("patchNotesMenu").style.display = "none";
+  if (battling == false) {
+    if (patchNotesOpen == false) {
+      patchNotesOpen = true;
+      settingsOpen = false;
+      achTrackerOpen = false;
+      paused = true;
+      document.getElementById("shop").style.display = "none";
+      document.getElementById("banana").style.display = "none";
+      document.getElementById("clickCounter").style.display = "none";
+      document.getElementById("divider2").style.display = "none";
+      document.getElementById("settingsMenu").style.display = "none";
+      document.getElementById("achTrackerMenu").style.display = "none";
+      document.getElementById("divider4").style.display = "none";
+      document.getElementById("patchNotesMenu").style.display = "block";
+      document.getElementById("divider3").style.display = "block";
+    } else if (patchNotesOpen == true) {
+      patchNotesOpen = false;
+      paused = false;
+      document.getElementById("shop").style.display = "block";
+      document.getElementById("banana").style.display = "block";
+      document.getElementById("clickCounter").style.display = "block";
+      document.getElementById("divider2").style.display = "block";
+      document.getElementById("patchNotesMenu").style.display = "none";
+    }
   }
 }
 
@@ -1001,287 +1007,292 @@ function darkMode() {
 }
 
 function downloadSave() {
-  var data =
-    clicks +
-    "\n" +
-    upgCost +
-    "\n" +
-    workerCost +
-    "\n" +
-    superWorkerCost +
-    "\n" +
-    farmCost +
-    "\n" +
-    multiplier +
-    "\n" +
-    workers +
-    "\n" +
-    superWorkers +
-    "\n" +
-    farms +
-    "\n" +
-    expPriceMultiplier +
-    "\n" +
-    expPriceWorker +
-    "\n" +
-    expPriceSuperWorker +
-    "\n" +
-    expPriceFarm +
-    "\n" +
-    achievements +
-    "\n" +
-    a.banana1 +
-    "\n" +
-    a.banana2 +
-    "\n" +
-    a.banana3 +
-    "\n" +
-    a.banana4 +
-    "\n" +
-    a.multiplier1 +
-    "\n" +
-    a.multiplier2 +
-    "\n" +
-    a.multiplier3 +
-    "\n" +
-    a.multiplier4 +
-    "\n" +
-    a.workers1 +
-    "\n" +
-    a.workers2 +
-    "\n" +
-    a.workers3 +
-    "\n" +
-    a.workers4 +
-    "\n" +
-    a.superWorkers1 +
-    "\n" +
-    a.superWorkers2 +
-    "\n" +
-    a.superWorkers3 +
-    "\n" +
-    a.superWorkers4 +
-    "\n" +
-    a.farms1 +
-    "\n" +
-    a.farms2 +
-    "\n" +
-    a.farms3 +
-    "\n" +
-    a.farms4 +
-    "\n" +
-    colorMode +
-    "\n" +
-    difficulty;
+  if (battling == false) {
+    var data =
+      clicks +
+      "\n" +
+      upgCost +
+      "\n" +
+      workerCost +
+      "\n" +
+      superWorkerCost +
+      "\n" +
+      farmCost +
+      "\n" +
+      multiplier +
+      "\n" +
+      workers +
+      "\n" +
+      superWorkers +
+      "\n" +
+      farms +
+      "\n" +
+      expPriceMultiplier +
+      "\n" +
+      expPriceWorker +
+      "\n" +
+      expPriceSuperWorker +
+      "\n" +
+      expPriceFarm +
+      "\n" +
+      achievements +
+      "\n" +
+      a.banana1 +
+      "\n" +
+      a.banana2 +
+      "\n" +
+      a.banana3 +
+      "\n" +
+      a.banana4 +
+      "\n" +
+      a.multiplier1 +
+      "\n" +
+      a.multiplier2 +
+      "\n" +
+      a.multiplier3 +
+      "\n" +
+      a.multiplier4 +
+      "\n" +
+      a.workers1 +
+      "\n" +
+      a.workers2 +
+      "\n" +
+      a.workers3 +
+      "\n" +
+      a.workers4 +
+      "\n" +
+      a.superWorkers1 +
+      "\n" +
+      a.superWorkers2 +
+      "\n" +
+      a.superWorkers3 +
+      "\n" +
+      a.superWorkers4 +
+      "\n" +
+      a.farms1 +
+      "\n" +
+      a.farms2 +
+      "\n" +
+      a.farms3 +
+      "\n" +
+      a.farms4 +
+      "\n" +
+      colorMode +
+      "\n" +
+      difficulty;
 
-  var download = document.createElement("a");
-  download.style.display = "none";
-  download.setAttribute(
-    "href",
-    "data:text/file;charset=utf-8," + encodeURIComponent(data)
-  );
-  download.setAttribute("download", "BC-save");
-  document.body.appendChild(download);
-  download.click();
-  document.body.removeChild(download);
+    var download = document.createElement("a");
+    download.style.display = "none";
+    download.setAttribute(
+      "href",
+      "data:text/file;charset=utf-8," + encodeURIComponent(data)
+    );
+    download.setAttribute("download", "BC-save");
+    document.body.appendChild(download);
+    download.click();
+    document.body.removeChild(download);
+  }
 }
 
 function uploadSave() {
-  var upload = document.createElement("input");
-  upload.style.display = "none";
-  upload.setAttribute("type", "file");
-  document.body.appendChild(upload);
-  upload.click();
-  upload.addEventListener(
-    "change",
-    function (e) {
-      console.log(upload.files);
-      const reader = new FileReader();
-      reader.onload = () => {
-        const line = reader.result.split("\n");
-        if (reader.result.split("\n").map(() => {}).length != 36) {
-          alert(
-            "This file is from an outdated version of Banana Clicker, so some things may not work correctly. This file has " +
-              reader.result
-                .split("\n")
-                .map(() => {})
-                .length.toString() +
-              " lines. Updated/current files have 36 lines."
-          );
-        }
-        try {
-          if (line[14] == "false") {
-            a.banana1 = false;
-          } else {
-            a.banana1 = true;
+  if (battling == false) {
+    var upload = document.createElement("input");
+    upload.style.display = "none";
+    upload.setAttribute("type", "file");
+    document.body.appendChild(upload);
+    upload.click();
+    upload.addEventListener(
+      "change",
+      function (e) {
+        console.log(upload.files);
+        const reader = new FileReader();
+        reader.onload = () => {
+          const line = reader.result.split("\n");
+          if (reader.result.split("\n").map(() => {}).length != 36) {
+            alert(
+              "This file is from an outdated version of Banana Clicker, so some things may not work correctly. This file has " +
+                reader.result
+                  .split("\n")
+                  .map(() => {})
+                  .length.toString() +
+                " lines. Updated/current files have 36 lines."
+            );
           }
-          if (line[15] == "false") {
-            a.banana2 = false;
-          } else {
-            a.banana2 = true;
+          try {
+            if (line[14] == "false") {
+              a.banana1 = false;
+            } else {
+              a.banana1 = true;
+            }
+            if (line[15] == "false") {
+              a.banana2 = false;
+            } else {
+              a.banana2 = true;
+            }
+            if (line[16] == "false") {
+              a.banana3 = false;
+            } else {
+              a.banana3 = true;
+            }
+            if (line[17] == "false") {
+              a.banana4 = false;
+            } else {
+              a.banana4 = true;
+            }
+            if (line[18] == "false") {
+              a.multiplier1 = false;
+            } else {
+              a.multiplier1 = true;
+            }
+            if (line[19] == "false") {
+              a.multiplier2 = false;
+            } else {
+              a.multiplier2 = true;
+            }
+            if (line[20] == "false") {
+              a.multiplier3 = false;
+            } else {
+              a.multiplier3 = true;
+            }
+            if (line[21] == "false") {
+              a.multiplier4 = false;
+            } else {
+              a.multiplier4 = true;
+            }
+            if (line[22] == "false") {
+              a.workers1 = false;
+            } else {
+              a.workers1 = true;
+            }
+            if (line[23] == "false") {
+              a.workers2 = false;
+            } else {
+              a.workers2 = true;
+            }
+            if (line[24] == "false") {
+              a.workers3 = false;
+            } else {
+              a.workers3 = true;
+            }
+            if (line[25] == "false") {
+              a.workers4 = false;
+            } else {
+              a.workers4 = true;
+            }
+            if (line[26] == "false") {
+              a.superWorkers1 = false;
+            } else {
+              a.superWorkers1 = true;
+            }
+            if (line[27] == "false") {
+              a.superWorkers2 = false;
+            } else {
+              a.superWorkers2 = true;
+            }
+            if (line[28] == "false") {
+              a.superWorkers3 = false;
+            } else {
+              a.superWorkers3 = true;
+            }
+            if (line[29] == "false") {
+              a.superWorkers4 = false;
+            } else {
+              a.superWorkers4 = true;
+            }
+            if (line[30] == "false") {
+              a.farms1 = false;
+            } else {
+              a.farms1 = true;
+            }
+            if (line[31] == "false") {
+              a.farms2 = false;
+            } else {
+              a.farms2 = true;
+            }
+            if (line[32] == "false") {
+              a.farms3 = false;
+            } else {
+              a.farms3 = true;
+            }
+            if (line[33] == "false") {
+              a.farms4 = false;
+            } else {
+              a.farms4 = true;
+            }
+            if (line[34] == "dark") {
+              document.getElementById("stylesheet").href = "darkmode.css";
+              document.getElementById("dark").style.backgroundColor = "orange";
+              document.getElementById("dark").style.color = "rgb(30,30,30)";
+              document.getElementById("light").style.backgroundColor =
+                "transparent";
+              document.getElementById("light").style.color = "orange";
+              colorMode = "dark";
+            } else {
+              document.getElementById("stylesheet").href = "lightmode.css";
+              document.getElementById("light").style.backgroundColor = "orange";
+              document.getElementById("light").style.color = "rgb(30,30,30)";
+              document.getElementById("dark").style.backgroundColor =
+                "transparent";
+              document.getElementById("dark").style.color = "orange";
+              colorMode = "light";
+            }
+            if (line[35] == 1) {
+              document.getElementById("easy").style.backgroundColor = "orange";
+              document.getElementById("easy").style.color = "rgb(30,30,30)";
+              document.getElementById("normal").style.backgroundColor =
+                "transparent";
+              document.getElementById("normal").style.color = "orange";
+              document.getElementById("hard").style.backgroundColor =
+                "transparent";
+              document.getElementById("hard").style.color = "orange";
+            } else if (line[35] == 2) {
+              document.getElementById("normal").style.backgroundColor =
+                "orange";
+              document.getElementById("normal").style.color = "rgb(30,30,30)";
+              document.getElementById("easy").style.backgroundColor =
+                "transparent";
+              document.getElementById("easy").style.color = "orange";
+              document.getElementById("hard").style.backgroundColor =
+                "transparent";
+              document.getElementById("hard").style.color = "orange";
+            } else {
+              document.getElementById("hard").style.backgroundColor = "orange";
+              document.getElementById("hard").style.color = "rgb(30,30,30)";
+              document.getElementById("normal").style.backgroundColor =
+                "transparent";
+              document.getElementById("normal").style.color = "orange";
+              document.getElementById("easy").style.backgroundColor =
+                "transparent";
+              document.getElementById("easy").style.color = "orange";
+            }
+            clicks = parseInt(line[0]);
+            upgCost = parseInt(line[1]);
+            workerCost = parseInt(line[2]);
+            superWorkerCost = parseInt(line[3]);
+            farmCost = parseInt(line[4]);
+            multiplier = parseInt(line[5]);
+            workers = parseInt(line[6]);
+            superWorkers = parseInt(line[7]);
+            farms = parseInt(line[8]);
+            expPriceMultiplier = parseInt(line[9]);
+            expPriceWorker = parseInt(line[10]);
+            expPriceSuperWorker = parseInt(line[11]);
+            expPriceFarm = parseInt(line[12]);
+            achievements = parseInt(line[13]);
+          } catch {
+            alert(
+              "There was an error while converting the file into data for the game. This is most likely because the file may be old and not correctly formatted, or there is an error in the file."
+            );
           }
-          if (line[16] == "false") {
-            a.banana3 = false;
-          } else {
-            a.banana3 = true;
-          }
-          if (line[17] == "false") {
-            a.banana4 = false;
-          } else {
-            a.banana4 = true;
-          }
-          if (line[18] == "false") {
-            a.multiplier1 = false;
-          } else {
-            a.multiplier1 = true;
-          }
-          if (line[19] == "false") {
-            a.multiplier2 = false;
-          } else {
-            a.multiplier2 = true;
-          }
-          if (line[20] == "false") {
-            a.multiplier3 = false;
-          } else {
-            a.multiplier3 = true;
-          }
-          if (line[21] == "false") {
-            a.multiplier4 = false;
-          } else {
-            a.multiplier4 = true;
-          }
-          if (line[22] == "false") {
-            a.workers1 = false;
-          } else {
-            a.workers1 = true;
-          }
-          if (line[23] == "false") {
-            a.workers2 = false;
-          } else {
-            a.workers2 = true;
-          }
-          if (line[24] == "false") {
-            a.workers3 = false;
-          } else {
-            a.workers3 = true;
-          }
-          if (line[25] == "false") {
-            a.workers4 = false;
-          } else {
-            a.workers4 = true;
-          }
-          if (line[26] == "false") {
-            a.superWorkers1 = false;
-          } else {
-            a.superWorkers1 = true;
-          }
-          if (line[27] == "false") {
-            a.superWorkers2 = false;
-          } else {
-            a.superWorkers2 = true;
-          }
-          if (line[28] == "false") {
-            a.superWorkers3 = false;
-          } else {
-            a.superWorkers3 = true;
-          }
-          if (line[29] == "false") {
-            a.superWorkers4 = false;
-          } else {
-            a.superWorkers4 = true;
-          }
-          if (line[30] == "false") {
-            a.farms1 = false;
-          } else {
-            a.farms1 = true;
-          }
-          if (line[31] == "false") {
-            a.farms2 = false;
-          } else {
-            a.farms2 = true;
-          }
-          if (line[32] == "false") {
-            a.farms3 = false;
-          } else {
-            a.farms3 = true;
-          }
-          if (line[33] == "false") {
-            a.farms4 = false;
-          } else {
-            a.farms4 = true;
-          }
-          if (line[34] == "dark") {
-            document.getElementById("stylesheet").href = "darkmode.css";
-            document.getElementById("dark").style.backgroundColor = "orange";
-            document.getElementById("dark").style.color = "rgb(30,30,30)";
-            document.getElementById("light").style.backgroundColor =
-              "transparent";
-            document.getElementById("light").style.color = "orange";
-            colorMode = "dark";
-          } else {
-            document.getElementById("stylesheet").href = "lightmode.css";
-            document.getElementById("light").style.backgroundColor = "orange";
-            document.getElementById("light").style.color = "rgb(30,30,30)";
-            document.getElementById("dark").style.backgroundColor =
-              "transparent";
-            document.getElementById("dark").style.color = "orange";
-            colorMode = "light";
-          }
-          if (line[35] == 1) {
-            document.getElementById("easy").style.backgroundColor = "orange";
-            document.getElementById("easy").style.color = "rgb(30,30,30)";
-            document.getElementById("normal").style.backgroundColor =
-              "transparent";
-            document.getElementById("normal").style.color = "orange";
-            document.getElementById("hard").style.backgroundColor =
-              "transparent";
-            document.getElementById("hard").style.color = "orange";
-          } else if (line[35] == 2) {
-            document.getElementById("normal").style.backgroundColor = "orange";
-            document.getElementById("normal").style.color = "rgb(30,30,30)";
-            document.getElementById("easy").style.backgroundColor =
-              "transparent";
-            document.getElementById("easy").style.color = "orange";
-            document.getElementById("hard").style.backgroundColor =
-              "transparent";
-            document.getElementById("hard").style.color = "orange";
-          } else {
-            document.getElementById("hard").style.backgroundColor = "orange";
-            document.getElementById("hard").style.color = "rgb(30,30,30)";
-            document.getElementById("normal").style.backgroundColor =
-              "transparent";
-            document.getElementById("normal").style.color = "orange";
-            document.getElementById("easy").style.backgroundColor =
-              "transparent";
-            document.getElementById("easy").style.color = "orange";
-          }
-          clicks = parseInt(line[0]);
-          upgCost = parseInt(line[1]);
-          workerCost = parseInt(line[2]);
-          superWorkerCost = parseInt(line[3]);
-          farmCost = parseInt(line[4]);
-          multiplier = parseInt(line[5]);
-          workers = parseInt(line[6]);
-          superWorkers = parseInt(line[7]);
-          farms = parseInt(line[8]);
-          expPriceMultiplier = parseInt(line[9]);
-          expPriceWorker = parseInt(line[10]);
-          expPriceSuperWorker = parseInt(line[11]);
-          expPriceFarm = parseInt(line[12]);
-          achievements = parseInt(line[13]);
-        } catch {
-          alert(
-            "There was an error while converting the file into data for the game. This is most likely because the file may be old and not correctly formatted, or there is an error in the file."
-          );
-        }
-      };
-      reader.onerror = function (e) {
-        alert(e.target.error.name);
-      };
-      reader.readAsText(upload.files[0]);
-    },
-    false
-  );
+        };
+        reader.onerror = function (e) {
+          alert(e.target.error.name);
+        };
+        reader.readAsText(upload.files[0]);
+      },
+      false
+    );
+  }
 }
 
 function attack() {
@@ -1296,6 +1307,7 @@ function attack() {
     document.getElementById("divider2").style.display = "none";
     document.getElementById("patchNotesMenu").style.display = "none";
     document.getElementById("attackMenu").style.display = "block";
+    battling = true;
   } else {
     return;
   }
@@ -1420,6 +1432,7 @@ function startAttack() {
   document.getElementById("battle").style.display = "block";
   document.getElementById("divider5").style.display = "block";
   countdown();
+  battleScore = 0;
 }
 
 function countdown() {
@@ -1515,7 +1528,7 @@ function createNode() {
   }, 100);
   setTimeout(() => {
     document.getElementById("battle").removeChild(newNode);
-  }, 3000);
+  }, 3500);
 }
 
 function endGame() {
@@ -1592,14 +1605,14 @@ function endGame() {
     }
     if (workerBet != 0) {
       document.getElementById("gainOrLoss").innerHTML +=
-        workerBet + "Workers <br>";
+        workerBet + " Workers <br>";
     }
     if (superWorkerBet != 0) {
       document.getElementById("gainOrLoss").innerHTML +=
-        superWorkerBet + "Super Workers <br>";
+        superWorkerBet + " Super Workers <br>";
     }
     if (farmBet != 0) {
-      document.getElementById("gainOrLoss").innerHTML += farmBet + "Farms";
+      document.getElementById("gainOrLoss").innerHTML += farmBet + " Farms";
     }
     multiplier += multiplierBet;
     workers += workerBet;
@@ -1616,14 +1629,14 @@ function endGame() {
     }
     if (workerBet != 0) {
       document.getElementById("gainOrLoss").innerHTML +=
-        workerBet + "Workers <br>";
+        workerBet + " Workers <br>";
     }
     if (superWorkerBet != 0) {
       document.getElementById("gainOrLoss").innerHTML +=
-        superWorkerBet + "Super Workers <br>";
+        superWorkerBet + " Super Workers <br>";
     }
     if (farmBet != 0) {
-      document.getElementById("gainOrLoss").innerHTML += farmBet + "Farms";
+      document.getElementById("gainOrLoss").innerHTML += farmBet + " Farms";
     }
     multiplier -= multiplierBet;
     workers -= workerBet;
@@ -1638,6 +1651,8 @@ function endGame() {
   document.getElementById("battleEndScreen").style.display = "block";
   document.getElementById("divider3").style.display = "block";
   document.getElementById("divider5").style.display = "none";
+  battleScore = 0;
+  opponentScore = 0;
 }
 
 function closeBattle() {
@@ -1646,4 +1661,5 @@ function closeBattle() {
   document.getElementById("banana").style.display = "block";
   document.getElementById("clickCounter").style.display = "block";
   document.getElementById("divider2").style.display = "block";
+  battling = false;
 }
