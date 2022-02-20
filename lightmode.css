@@ -6,7 +6,7 @@
   margin-right: 0;
 }
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: white;
   font-size: 25px;
   user-select: none;
   overflow-x: hidden;
@@ -15,16 +15,18 @@ body {
 h1,
 h2,
 h3,
+h4,
 p {
   color: orange;
   font-family: "Montserrat";
 }
 #header {
-  font-size: 80px;
+  font-size: 70px;
   font-weight: 900;
   text-align: center;
   position: relative;
-  top: -25px;
+  height: 0;
+  top: -10px;
 }
 #divider {
   width: 96%;
@@ -52,6 +54,7 @@ p {
   height: 10px;
   background: orange;
   top: 768px;
+  display: block;
 }
 #divider4 {
   width: 96%;
@@ -61,6 +64,16 @@ p {
   height: 10px;
   background: orange;
   top: 865px;
+  display: none;
+}
+#divider5 {
+  width: 96%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+  height: 10px;
+  background: orange;
+  top: 1050px;
   display: none;
 }
 #banana {
@@ -171,13 +184,131 @@ button#pause {
   height: 520px;
   left: 50%;
   transform: translate(-50%);
-  border: 5px solid rgb(210, 210, 210);
+  border: 5px solid rgb(230, 230, 230);
   border-radius: 20px;
   text-align: center;
   display: block;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+#attackMenu {
+  position: absolute;
+  top: 200px;
+  width: 60%;
+  height: 520px;
+  left: 50%;
+  transform: translate(-50%);
+  border: 5px solid rgb(230, 230, 230);
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+}
+#attackDialogue {
+  position: absolute;
+  top: 200px;
+  width: 60%;
+  height: 200px;
+  left: 50%;
+  top: 370px;
+  transform: translate(-50%);
+  border: 5px solid rgb(230, 230, 230);
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+}
+#attackDialogue #generatingOpponent {
+  position: relative;
+  top: 54px;
+  display: block;
+}
+#attackDialogue #startingBattle {
+  position: relative;
+  top: 54px;
+  display: none;
+}
+#attackMenu input {
+  background: transparent;
+  color: orange;
+  font-family: "Montserrat";
+  border: 2px solid orange;
+  width: 40px;
+  font-size: 25px;
+  padding: 5px;
+  border-radius: 10px;
+  margin-left: 10px;
+}
+#attackMenu h4 {
+  margin: 15px;
+  position: relative;
+  bottom: 10px;
+}
+#attackMenu button {
+  border: 2px solid orange;
+  width: 120px;
+  padding: 3px;
+  position: relative;
+  bottom: 5px;
+}
+#battle {
+  position: absolute;
+  top: 200px;
+  width: 90%;
+  height: 800px;
+  left: 50%;
+  transform: translate(-50%);
+  border: 5px solid rgb(230, 230, 230);
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  overflow: hidden;
+  display: none;
+}
+#battleEndScreen {
+  position: absolute;
+  top: 200px;
+  width: 60%;
+  height: 520px;
+  left: 50%;
+  transform: translate(-50%);
+  border: 5px solid rgb(230, 230, 230);
+  border-radius: 20px;
+  text-align: center;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: none;
+}
+#countdown {
+  position: absolute;
+  top: 310px;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 75px;
+}
+#timer {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  border: 2px solid rgb(230, 230, 230);
+  color: orange;
+  font-family: "Montserrat";
+  padding: 5px;
+  border-radius: 10px;
+}
+img.node {
+  position: absolute;
+  width: 100px;
+  height: 60px;
+  cursor: pointer;
 }
 #settings {
   position: absolute;
@@ -235,6 +366,24 @@ button#pause {
   font-size: 40px;
   cursor: pointer;
 }
+#attackBtn {
+  position: absolute;
+  font-family: "Material Icons";
+  color: orange;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 50%;
+  width: auto;
+  height: auto;
+  top: 12px;
+  right: 215px;
+  width: 40px;
+  cursor: pointer;
+  display: none;
+}
+#attackImg {
+  width: 33px;
+}
 #settingsMenu {
   position: absolute;
   top: 200px;
@@ -242,7 +391,7 @@ button#pause {
   height: 520px;
   left: 50%;
   transform: translate(-50%);
-  border: 5px solid rgb(210, 210, 210);
+  border: 5px solid rgb(230, 230, 230);
   border-radius: 20px;
   text-align: center;
   display: none;
@@ -256,6 +405,14 @@ button#pause {
   transform: translate(-50%);
 }
 #patchNotesDivider {
+  position: relative;
+  height: 6px;
+  width: 95%;
+  background: orange;
+  left: 50%;
+  transform: translate(-50%);
+}
+#attackMenuDivider {
   position: relative;
   height: 6px;
   width: 95%;
@@ -296,7 +453,7 @@ button#pause {
 }
 #dark {
   background-color: orange;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 #easy,
 #dark {
@@ -308,7 +465,7 @@ button#pause {
 }
 #normal {
   background: orange;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 #save,
 #cancel {
@@ -326,7 +483,7 @@ button#pause {
   position: absolute;
   width: 300px;
   height: 90px;
-  background: rgb(255, 255, 255);
+  background: white;
   border: 4px solid orange;
   border-radius: 10px;
   top: 180px;
@@ -340,7 +497,7 @@ button#pause {
   position: absolute;
   width: 300px;
   height: 90px;
-  background: rgb(255, 255, 255);
+  background: white;
   border: 4px solid orange;
   border-radius: 10px;
   top: 285px;
@@ -354,7 +511,7 @@ button#pause {
   position: absolute;
   width: 300px;
   height: 90px;
-  background: rgb(255, 255, 255);
+  background: white;
   border: 4px solid orange;
   border-radius: 10px;
   top: 390px;
@@ -379,7 +536,7 @@ button#pause {
   height: 620px;
   left: 50%;
   transform: translate(-50%);
-  border: 5px solid rgb(210, 210, 210);
+  border: 5px solid rgb(230, 230, 230);
   border-radius: 20px;
   text-align: center;
   display: none;
@@ -430,8 +587,8 @@ button#pause {
 .achPreview {
   width: 230px;
   height: 70px;
-  background: rgb(255, 255, 255);
-  border: 4px solid rgb(210, 210, 210);
+  background: white;
+  border: 4px solid rgb(230, 230, 230);
   border-radius: 10px;
   top: 180px;
   font-size: 15px;
@@ -450,7 +607,7 @@ button#pause {
   border-radius: 10px;
 }
 *::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255);
+  background: white;
   border-radius: 20px;
 }
 *::-webkit-scrollbar-thumb {
@@ -458,8 +615,8 @@ button#pause {
   border-radius: 20px;
 }
 button#bundle {
-  color: lime;
-  border: 4px solid lime;
+  color: rgb(0, 190, 0);
+  border: 4px solid rgb(0, 190, 0);
 }
 /* #banana,
 #clickCounter,
