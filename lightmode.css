@@ -187,7 +187,6 @@ button#pause {
   border: 5px solid rgb(230, 230, 230);
   border-radius: 20px;
   text-align: center;
-  display: block;
   overflow-x: hidden;
   overflow-y: auto;
   display: none;
