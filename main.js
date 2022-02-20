@@ -1,5 +1,3 @@
-document.addEventListener("keypress", keyPressed);
-
 var clicks = 0;
 var upgCost = 100;
 var workerCost = 200;
@@ -25,6 +23,14 @@ var achSlot2 = true;
 var achSlot3 = true;
 var colorMode = "dark";
 var bundleAvailable = false;
+var battling = false;
+var multiplierBet = 0;
+var workerBet = 0;
+var superWorkerBet = 0;
+var farmBet = 0;
+var battleScore = 0;
+
+document.addEventListener("keypress", keyPressed);
 
 const bundle = {
   multipliers: 0,
@@ -87,7 +93,7 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-setInterval(function () {
+setInterval(() => {
   newBundle();
 }, 90000);
 
@@ -98,7 +104,7 @@ function ach(title, reward) {
     document.getElementById("achReward").innerHTML = reward.toString();
     var opacity = 0;
     var right = -330;
-    var interval = setInterval(function () {
+    var interval = setInterval(() => {
       if (opacity < 1) {
         opacity += 0.01;
       } else {
@@ -112,11 +118,11 @@ function ach(title, reward) {
       document.getElementById("achievement").style.opacity = opacity;
       document.getElementById("achievement").style.right = right + "px";
     });
-    setTimeout(function () {
+    setTimeout(() => {
       clearInterval(interval);
     }, 1000);
-    setTimeout(function () {
-      var interval2 = setInterval(function () {
+    setTimeout(() => {
+      var interval2 = setInterval(() => {
         if (opacity > 0) {
           opacity -= 0.01;
         } else {
@@ -130,7 +136,7 @@ function ach(title, reward) {
         document.getElementById("achievement").style.opacity = opacity;
         document.getElementById("achievement").style.right = right + "px";
       });
-      setTimeout(function () {
+      setTimeout(() => {
         clearInterval(interval2);
         achSlot1 = true;
       }, 500);
@@ -141,7 +147,7 @@ function ach(title, reward) {
     document.getElementById("achReward2").innerHTML = reward.toString();
     var opacity = 0;
     var right = -330;
-    var interval = setInterval(function () {
+    var interval = setInterval(() => {
       if (opacity < 1) {
         opacity += 0.01;
       } else {
@@ -155,11 +161,11 @@ function ach(title, reward) {
       document.getElementById("achievement2").style.opacity = opacity;
       document.getElementById("achievement2").style.right = right + "px";
     });
-    setTimeout(function () {
+    setTimeout(() => {
       clearInterval(interval);
     }, 1000);
-    setTimeout(function () {
-      var interval2 = setInterval(function () {
+    setTimeout(() => {
+      var interval2 = setInterval(() => {
         if (opacity > 0) {
           opacity -= 0.01;
         } else {
@@ -173,7 +179,7 @@ function ach(title, reward) {
         document.getElementById("achievement2").style.opacity = opacity;
         document.getElementById("achievement2").style.right = right + "px";
       });
-      setTimeout(function () {
+      setTimeout(() => {
         clearInterval(interval2);
         achSlot2 = true;
       }, 500);
@@ -184,7 +190,7 @@ function ach(title, reward) {
     document.getElementById("achReward3").innerHTML = reward.toString();
     var opacity = 0;
     var right = -330;
-    var interval = setInterval(function () {
+    var interval = setInterval(() => {
       if (opacity < 1) {
         opacity += 0.01;
       } else {
@@ -198,11 +204,11 @@ function ach(title, reward) {
       document.getElementById("achievement3").style.opacity = opacity;
       document.getElementById("achievement3").style.right = right + "px";
     });
-    setTimeout(function () {
+    setTimeout(() => {
       clearInterval(interval);
     }, 1000);
-    setTimeout(function () {
-      var interval2 = setInterval(function () {
+    setTimeout(() => {
+      var interval2 = setInterval(() => {
         if (opacity > 0) {
           opacity -= 0.01;
         } else {
@@ -216,7 +222,7 @@ function ach(title, reward) {
         document.getElementById("achievement3").style.opacity = opacity;
         document.getElementById("achievement3").style.right = right + "px";
       });
-      setTimeout(function () {
+      setTimeout(() => {
         clearInterval(interval2);
         achSlot3 = true;
       }, 500);
@@ -226,7 +232,7 @@ function ach(title, reward) {
   }
 }
 
-setInterval(function () {
+setInterval(() => {
   if (paused == false) {
     document.getElementById("clicks").innerHTML = abbreviate(clicks);
     document.getElementById("upgCost").innerHTML = abbreviate(upgCost);
@@ -248,6 +254,18 @@ setInterval(function () {
     document.getElementById("currentFarms").innerHTML = farms;
     document.getElementById("nextFarm").innerHTML = farms + 1;
     document.getElementById("achCount").innerHTML = achievements;
+
+    if (paused == false) {
+      document.getElementById("pauseIcon").innerHTML = "pause";
+    } else {
+      document.getElementById("pauseIcon").innerHTML = "play_arrow";
+    }
+
+    if (a.banana2 == false) {
+      document.getElementById("attackBtn").style.display = "none";
+    } else {
+      document.getElementById("attackBtn").style.display = "block";
+    }
 
     if (difficulty == 2) {
       if (multiplier % 10 == 0 && expPriceMultiplier != multiplier / 10) {
@@ -293,10 +311,7 @@ setInterval(function () {
       achievements++;
     }
     if (clicks >= 100000 && a.banana2 == false) {
-      ach("Reach 100K Bananas", "+3 Super Workers");
-      freeSuperWorker();
-      freeSuperWorker();
-      freeSuperWorker();
+      ach("Reach 100K Bananas", "Battles Unlocked!");
       a.banana2 = true;
       achievements++;
     }
@@ -535,7 +550,7 @@ setInterval(function () {
   }
 });
 
-setInterval(function () {
+setInterval(() => {
   if (paused == false) {
     if (difficulty == 1) {
       clicks += (farms * 200 + superWorkers * 10 + workers) * multiplier;
@@ -642,13 +657,13 @@ function spendAnimation(price) {
   document.body.appendChild(elem);
   var elemTop = 455;
   var elemOpacity = 1;
-  var interval = setInterval(function () {
+  var interval = setInterval(() => {
     elemTop -= 0.1;
     elemOpacity -= 0.005;
     elem.style.top = elemTop.toString() + "px";
     elem.style.opacity = elemOpacity.toString();
   });
-  setTimeout(function () {
+  setTimeout(() => {
     clearInterval(interval);
     document.body.removeChild(elem);
   }, 1000);
@@ -720,7 +735,7 @@ function notEnoughBananas() {
   document.getElementById("clicks").style.color = "red";
   document.getElementById("clicks").style.fontSize = "50px";
   document.getElementById("bananaIcon").style.fontSize = "50px";
-  setTimeout(function () {
+  setTimeout(() => {
     document.getElementById("clicks").style.color = "rgb(255, 217, 0)";
     document.getElementById("clicks").style.fontSize = "40px";
     document.getElementById("bananaIcon").style.fontSize = "40px";
@@ -1082,14 +1097,14 @@ function uploadSave() {
     function (e) {
       console.log(upload.files);
       const reader = new FileReader();
-      reader.onload = function () {
+      reader.onload = () => {
         const line = reader.result.split("\n");
-        if (reader.result.split("\n").map(function () {}).length != 36) {
+        if (reader.result.split("\n").map(() => {}).length != 36) {
           alert(
             "This file is from an outdated version of Banana Clicker, so some things may not work correctly. This file has " +
               reader.result
                 .split("\n")
-                .map(function () {})
+                .map(() => {})
                 .length.toString() +
               " lines. Updated/current files have 36 lines."
           );
@@ -1267,4 +1282,368 @@ function uploadSave() {
     },
     false
   );
+}
+
+function attack() {
+  if (confirm("Are you sure you want to start an attack?")) {
+    document.getElementById("shop").style.display = "none";
+    document.getElementById("banana").style.display = "none";
+    document.getElementById("clickCounter").style.display = "none";
+    document.getElementById("divider2").style.display = "none";
+    document.getElementById("settingsMenu").style.display = "none";
+    document.getElementById("achTrackerMenu").style.display = "none";
+    document.getElementById("divider4").style.display = "none";
+    document.getElementById("divider2").style.display = "none";
+    document.getElementById("patchNotesMenu").style.display = "none";
+    document.getElementById("attackMenu").style.display = "block";
+  } else {
+    return;
+  }
+}
+
+function attackBet() {
+  if (
+    isNaN(parseInt(document.getElementById("multiplierBet").value)) == true ||
+    isNaN(parseInt(document.getElementById("workerBet").value)) == true ||
+    isNaN(parseInt(document.getElementById("superWorkerBet").value)) == true ||
+    isNaN(parseInt(document.getElementById("farmBet").value)) == true
+  ) {
+    alert("One or more inputs has an error");
+    return;
+  }
+  multiplierBet = parseInt(document.getElementById("multiplierBet").value);
+  workerBet = parseInt(document.getElementById("workerBet").value);
+  superWorkerBet = parseInt(document.getElementById("superWorkerBet").value);
+  farmBet = parseInt(document.getElementById("farmBet").value);
+  if (
+    multiplierBet >= multiplier ||
+    workerBet > workers ||
+    superWorkerBet > superWorkers ||
+    farmBet > farms
+  ) {
+    alert(
+      "You cannot bet more than what you have, or the same multiplier you have. You have: \n\n" +
+        multiplier +
+        "x Multiplier \n" +
+        workers +
+        " Workers \n" +
+        superWorkers +
+        " Super Workers \n" +
+        farms +
+        " Farms"
+    );
+    return;
+  }
+  if (
+    multiplierBet == 0 &&
+    workerBet == 0 &&
+    superWorkerBet == 0 &&
+    farmBet == 0
+  ) {
+    alert("You cannot bet nothing.");
+    return;
+  }
+  if (
+    (multiplier > 20 && multiplierBet >= multiplier / 5) ||
+    (workers > 20 && workerBet >= workers / 5) ||
+    (superWorkers > 20 && superWorkerBet >= superWorkers / 5) ||
+    (farms > 20 && farmBet >= farms / 5)
+  ) {
+    if (
+      !confirm(
+        "Are you sure? One or more of these bets is at least 20% of those items that you have and could cause a large loss if you are defeated. You have: \n\n" +
+          multiplier +
+          "x Multiplier \n" +
+          workers +
+          " Workers \n" +
+          superWorkers +
+          " Super Workers \n" +
+          farms +
+          " Farms"
+      )
+    ) {
+      return;
+    }
+  }
+  document.getElementById("attackMenu").style.display = "none";
+  document.getElementById("attackDialogue").style.display = "block";
+  document.getElementById("generatingOpponent").style.opacity = 0;
+  var opacity1 = 0;
+  var interval1 = setInterval(() => {
+    if (opacity1 < 1) {
+      opacity1 += 0.01;
+      document.getElementById("generatingOpponent").style.opacity = opacity1;
+    } else {
+      opacity1 = 1;
+    }
+  });
+  setTimeout(() => {
+    clearInterval(interval1);
+    var interval2 = setInterval(() => {
+      if (opacity1 > 0) {
+        opacity1 -= 0.01;
+        document.getElementById("generatingOpponent").style.opacity = opacity1;
+      } else {
+        opacity1 = 0;
+      }
+    });
+    setTimeout(() => {
+      clearInterval(interval2);
+    }, 1000);
+  }, 1000);
+
+  setTimeout(() => {
+    document.getElementById("generatingOpponent").style.display = "none";
+    document.getElementById("startingBattle").style.display = "block";
+    var opacity2 = 0;
+    var interval3 = setInterval(() => {
+      if (opacity2 < 1) {
+        opacity2 += 0.01;
+        document.getElementById("startingBattle").style.opacity = opacity2;
+      } else {
+        opacity2 = 1;
+      }
+    });
+    setTimeout(() => {
+      clearInterval(interval3);
+    }, 1000);
+  }, 2100);
+
+  setTimeout(() => {
+    startAttack();
+  }, 3400);
+}
+
+function startAttack() {
+  document.getElementById("attackDialogue").style.display = "none";
+  document.getElementById("divider3").style.display = "none";
+  document.getElementById("battle").style.display = "block";
+  document.getElementById("divider5").style.display = "block";
+  countdown();
+}
+
+function countdown() {
+  document.getElementById("countdown").style.scale = "1";
+  document.getElementById("countdown").style.opacity = "1";
+  document.getElementById("countdown").innerHTML = "3";
+  countdownInflate();
+  setTimeout(() => {
+    document.getElementById("countdown").innerHTML = "2";
+    countdownInflate();
+  }, 1000);
+  setTimeout(() => {
+    document.getElementById("countdown").innerHTML = "1";
+    countdownInflate();
+  }, 2000);
+  setTimeout(() => {
+    document.getElementById("countdown").innerHTML = "";
+    document.getElementById("battlePrompt").style.display = "none";
+    timer();
+    nodeLauncher();
+  }, 3000);
+}
+
+function countdownInflate() {
+  var opacity = 1;
+  var scale = 1;
+  var interval = setInterval(() => {
+    opacity -= 0.005;
+    scale += 0.005;
+    document.getElementById("countdown").style.opacity = opacity.toString();
+    document.getElementById("countdown").style.transform =
+      "scale(" + scale + ")";
+  });
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 1000);
+}
+
+function timer() {
+  var timeLeft = 20;
+  var interval = setInterval(() => {
+    timeLeft--;
+    if (timeLeft > 9) {
+      document.getElementById("timer").innerHTML = "0:" + timeLeft;
+    } else if (timeLeft > -1 && timeLeft <= 9) {
+      document.getElementById("timer").innerHTML = "0:0" + timeLeft;
+    }
+    if (timeLeft == 0) {
+      setTimeout(() => {
+        clearInterval(interval);
+        endGame();
+        timeLeft = 20;
+      }, 1000);
+    }
+  }, 1000);
+}
+
+function nodeLauncher() {
+  var interval = setInterval(() => {
+    createNode();
+  }, 950);
+  setTimeout(() => {
+    clearInterval(interval);
+  }, 19000);
+}
+
+function createNode() {
+  var x = random(0, 95);
+  var y = random(0, 95);
+  var rotation = random(0, 360);
+  var scale = 1;
+  var newNode = document.createElement("IMG");
+  newNode.setAttribute("src", "banana.png");
+  newNode.classList.add("node");
+  newNode.style.left = x + "%";
+  newNode.style.bottom = y + "%";
+  var interval = setInterval(() => {
+    scale -= 0.01;
+    newNode.style.transform =
+      "rotate(" + rotation + "deg) scale(" + scale + ")";
+    if (scale <= 0) {
+      clearInterval(interval);
+      newNode.style.display = "none";
+    }
+  }, 30);
+  newNode.onclick = () => {
+    clearInterval(interval);
+    newNode.style.display = "none";
+    battleScore++;
+  };
+  setTimeout(() => {
+    document.getElementById("battle").appendChild(newNode);
+  }, 100);
+  setTimeout(() => {
+    document.getElementById("battle").removeChild(newNode);
+  }, 3000);
+}
+
+function endGame() {
+  document.getElementById("battleScores").innerHTML = battleScore;
+  console.log(battleScore);
+  var win = null;
+  var opponentScore = 0;
+  if (battleScore == 20) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum < 70) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = null;
+      opponentScore = battleScore;
+    }
+  } else if (battleScore > 18) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum < 55) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = false;
+      opponentScore = battleScore + Math.round(random(1, 2));
+    }
+  } else if (battleScore > 15) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum < 40) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = false;
+      opponentScore = battleScore + Math.round(random(1, 5));
+    }
+  } else if (battleScore > 13) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum < 25) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = false;
+      opponentScore = battleScore + Math.round(random(1, 7));
+    }
+  } else if (battleScore > 10) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum < 10) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = false;
+      opponentScore = battleScore + Math.round(random(1, 10));
+    }
+  } else if (battleScore < 10) {
+    var randomNum = Math.round(random(0, 100));
+    if (randomNum == 1) {
+      win = true;
+      opponentScore = battleScore - Math.round(random(1, 3));
+    } else {
+      win = false;
+      opponentScore = battleScore + Math.round(random(1, 10));
+    }
+  }
+
+  document.getElementById("battleScores").innerHTML += " - " + opponentScore;
+
+  if (win == true) {
+    document.getElementById("result").innerHTML =
+      "<span style='color:lime'>VICTORY</span>";
+    document.getElementById("gainOrLossMsg").innerHTML = "You won:";
+    document.getElementById("gainOrLoss").innerHTML = "";
+    if (multiplierBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        multiplierBet + "x Multiplier <br>";
+    }
+    if (workerBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        workerBet + "Workers <br>";
+    }
+    if (superWorkerBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        superWorkerBet + "Super Workers <br>";
+    }
+    if (farmBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML += farmBet + "Farms";
+    }
+    multiplier += multiplierBet;
+    workers += workerBet;
+    superWorkers += superWorkerBet;
+    farms += farmBet;
+  } else if (win == false) {
+    document.getElementById("result").innerHTML =
+      "<span style='color:red'>DEFEAT</span>";
+    document.getElementById("gainOrLossMsg").innerHTML = "You lost:";
+    document.getElementById("gainOrLoss").innerHTML = "";
+    if (multiplierBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        multiplierBet + "x Multiplier <br>";
+    }
+    if (workerBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        workerBet + "Workers <br>";
+    }
+    if (superWorkerBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML +=
+        superWorkerBet + "Super Workers <br>";
+    }
+    if (farmBet != 0) {
+      document.getElementById("gainOrLoss").innerHTML += farmBet + "Farms";
+    }
+    multiplier -= multiplierBet;
+    workers -= workerBet;
+    superWorkers -= superWorkerBet;
+    farms -= farmBet;
+  } else {
+    document.getElementById("result").innerHTML = "TIE";
+    document.getElementById("gainOrLossMsg").innerHTML = "No winnings";
+    document.getElementById("gainOrLoss").innerHTML = "";
+  }
+  document.getElementById("battle").style.display = "none";
+  document.getElementById("battleEndScreen").style.display = "block";
+  document.getElementById("divider3").style.display = "block";
+  document.getElementById("divider5").style.display = "none";
+}
+
+function closeBattle() {
+  document.getElementById("battleEndScreen").style.display = "none";
+  document.getElementById("shop").style.display = "block";
+  document.getElementById("banana").style.display = "block";
+  document.getElementById("clickCounter").style.display = "block";
+  document.getElementById("divider2").style.display = "block";
 }
