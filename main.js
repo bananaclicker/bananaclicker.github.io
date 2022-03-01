@@ -1284,6 +1284,7 @@ function uploadSave() {
 }
 
 function attack() {
+  if (!battling) {
   if (confirm("Are you sure you want to start an attack?")) {
     document.getElementById("shop").style.display = "none";
     document.getElementById("banana").style.display = "none";
@@ -1298,6 +1299,7 @@ function attack() {
     battling = true;
   } else {
     return;
+  }
   }
 }
 
