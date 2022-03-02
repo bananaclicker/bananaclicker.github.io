@@ -757,7 +757,7 @@ function help() {
 }
 
 function settings() {
-  if (battling == false) {
+  if (!battling) {
     if (settingsOpen == false) {
       settingsOpen = true;
       achTrackerOpen = false;
@@ -920,7 +920,7 @@ function closeSettings() {
 }
 
 function achTracker() {
-  if (battling == false) {
+  if (!battling) {
     if (achTrackerOpen == false) {
       achTrackerOpen = true;
       settingsOpen = false;
@@ -950,7 +950,7 @@ function achTracker() {
 }
 
 function patchNotes() {
-  if (battling == false) {
+  if (!battling) {
     if (patchNotesOpen == false) {
       patchNotesOpen = true;
       settingsOpen = false;
@@ -994,79 +994,87 @@ function darkMode() {
   colorMode = "dark";
 }
 
+function Bin(number) {
+  return number.toString(2);
+}
+
+function unBin(str) {
+  return parseInt(str, 2);
+}
+
 function downloadSave() {
-  if (battling == false) {
+  if (!battling) {
     var data =
-      clicks +
-      "\n" +
-      upgCost +
-      "\n" +
-      workerCost +
-      "\n" +
-      superWorkerCost +
-      "\n" +
-      farmCost +
-      "\n" +
-      multiplier +
-      "\n" +
-      workers +
-      "\n" +
-      superWorkers +
-      "\n" +
-      farms +
-      "\n" +
+      Bin(clicks) +
+      "O" +
+      Bin(upgCost) +
+      "O" +
+      Bin(workerCost) +
+      "O" +
+      Bin(superWorkerCost) +
+      "O" +
+      Bin(farmCost) +
+      "O" +
+      Bin(multiplier) +
+      "O" +
+      Bin(workers) +
+      "O" +
+      Bin(superWorkers) +
+      "O" +
+      Bin(farms) +
+      "O" +
       expPriceMultiplier +
-      "\n" +
+      "O" +
       expPriceWorker +
-      "\n" +
+      "O" +
       expPriceSuperWorker +
-      "\n" +
+      "O" +
       expPriceFarm +
-      "\n" +
-      achievements +
-      "\n" +
+      "O" +
+      Bin(achievements) +
+      "O" +
       a.banana1 +
-      "\n" +
+      "O" +
       a.banana2 +
-      "\n" +
+      "O" +
       a.banana3 +
-      "\n" +
+      "O" +
       a.banana4 +
-      "\n" +
+      "O" +
       a.multiplier1 +
-      "\n" +
+      "O" +
       a.multiplier2 +
-      "\n" +
+      "O" +
       a.multiplier3 +
-      "\n" +
+      "O" +
       a.multiplier4 +
-      "\n" +
+      "O" +
       a.workers1 +
-      "\n" +
+      "O" +
       a.workers2 +
-      "\n" +
+      "O" +
       a.workers3 +
-      "\n" +
+      "O" +
       a.workers4 +
-      "\n" +
+      "O" +
       a.superWorkers1 +
-      "\n" +
+      "O" +
       a.superWorkers2 +
-      "\n" +
+      "O" +
       a.superWorkers3 +
-      "\n" +
+      "O" +
       a.superWorkers4 +
-      "\n" +
+      "O" +
       a.farms1 +
-      "\n" +
+      "O" +
       a.farms2 +
-      "\n" +
+      "O" +
       a.farms3 +
-      "\n" +
+      "O" +
       a.farms4 +
-      "\n" +
+      "O" +
       colorMode +
-      "\n" +
+      "O" +
       difficulty;
 
     var download = document.createElement("a");
@@ -1083,7 +1091,7 @@ function downloadSave() {
 }
 
 function uploadSave() {
-  if (battling == false) {
+  if (!battling) {
     var upload = document.createElement("input");
     upload.style.display = "none";
     upload.setAttribute("type", "file");
@@ -1095,119 +1103,68 @@ function uploadSave() {
         console.log(upload.files);
         const reader = new FileReader();
         reader.onload = () => {
-          const line = reader.result.split("\n");
-          if (reader.result.split("\n").map(() => {}).length != 36) {
-            alert(
-              "This file is from an outdated version of Banana Clicker, so some things may not work correctly. This file has " +
-                reader.result
-                  .split("\n")
-                  .map(() => {})
-                  .length.toString() +
-                " lines. Updated/current files have 36 lines."
-            );
-          }
+          const value = reader.result.split("O");
           try {
-            if (line[14] == "false") {
-              a.banana1 = false;
-            } else {
-              a.banana1 = true;
-            }
-            if (line[15] == "false") {
-              a.banana2 = false;
-            } else {
-              a.banana2 = true;
-            }
-            if (line[16] == "false") {
-              a.banana3 = false;
-            } else {
-              a.banana3 = true;
-            }
-            if (line[17] == "false") {
-              a.banana4 = false;
-            } else {
-              a.banana4 = true;
-            }
-            if (line[18] == "false") {
-              a.multiplier1 = false;
-            } else {
-              a.multiplier1 = true;
-            }
-            if (line[19] == "false") {
-              a.multiplier2 = false;
-            } else {
-              a.multiplier2 = true;
-            }
-            if (line[20] == "false") {
-              a.multiplier3 = false;
-            } else {
-              a.multiplier3 = true;
-            }
-            if (line[21] == "false") {
-              a.multiplier4 = false;
-            } else {
-              a.multiplier4 = true;
-            }
-            if (line[22] == "false") {
-              a.workers1 = false;
-            } else {
-              a.workers1 = true;
-            }
-            if (line[23] == "false") {
-              a.workers2 = false;
-            } else {
-              a.workers2 = true;
-            }
-            if (line[24] == "false") {
-              a.workers3 = false;
-            } else {
-              a.workers3 = true;
-            }
-            if (line[25] == "false") {
-              a.workers4 = false;
-            } else {
-              a.workers4 = true;
-            }
-            if (line[26] == "false") {
-              a.superWorkers1 = false;
-            } else {
-              a.superWorkers1 = true;
-            }
-            if (line[27] == "false") {
-              a.superWorkers2 = false;
-            } else {
-              a.superWorkers2 = true;
-            }
-            if (line[28] == "false") {
-              a.superWorkers3 = false;
-            } else {
-              a.superWorkers3 = true;
-            }
-            if (line[29] == "false") {
-              a.superWorkers4 = false;
-            } else {
-              a.superWorkers4 = true;
-            }
-            if (line[30] == "false") {
-              a.farms1 = false;
-            } else {
-              a.farms1 = true;
-            }
-            if (line[31] == "false") {
-              a.farms2 = false;
-            } else {
-              a.farms2 = true;
-            }
-            if (line[32] == "false") {
-              a.farms3 = false;
-            } else {
-              a.farms3 = true;
-            }
-            if (line[33] == "false") {
-              a.farms4 = false;
-            } else {
-              a.farms4 = true;
-            }
-            if (line[34] == "dark") {
+            if (value[14] == "false") a.banana1 = false;
+            else a.banana1 = true;
+            if (value[15] == "false") a.banana2 = false;
+            else a.banana2 = true;
+
+            if (value[16] == "false") a.banana3 = false;
+            else a.banana3 = true;
+
+            if (value[17] == "false") a.banana4 = false;
+            else a.banana4 = true;
+
+            if (value[18] == "false") a.multiplier1 = false;
+            else a.multiplier1 = true;
+
+            if (value[19] == "false") a.multiplier2 = false;
+            else a.multiplier2 = true;
+
+            if (value[20] == "false") a.multiplier3 = false;
+            else a.multiplier3 = true;
+
+            if (value[21] == "false") a.multiplier4 = false;
+            else a.multiplier4 = true;
+
+            if (value[22] == "false") a.workers1 = false;
+            else a.workers1 = true;
+
+            if (value[23] == "false") a.workers2 = false;
+            else a.workers2 = true;
+
+            if (value[24] == "false") a.workers3 = false;
+            else a.workers3 = true;
+
+            if (value[25] == "false") a.workers4 = false;
+            else a.workers4 = true;
+
+            if (value[26] == "false") a.superWorkers1 = false;
+            else a.superWorkers1 = true;
+
+            if (value[27] == "false") a.superWorkers2 = false;
+            else a.superWorkers2 = true;
+
+            if (value[28] == "false") a.superWorkers3 = false;
+            else a.superWorkers3 = true;
+
+            if (value[29] == "false") a.superWorkers4 = false;
+            else a.superWorkers4 = true;
+
+            if (value[30] == "false") a.farms1 = false;
+            else a.farms1 = true;
+
+            if (value[31] == "false") a.farms2 = false;
+            else a.farms2 = true;
+
+            if (value[32] == "false") a.farms3 = false;
+            else a.farms3 = true;
+
+            if (value[33] == "false") a.farms4 = false;
+            else a.farms4 = true;
+
+            if (value[34] == "dark") {
               document.getElementById("stylesheet").href = "darkmode.css";
               document.getElementById("dark").style.backgroundColor = "orange";
               document.getElementById("dark").style.color = "rgb(30,30,30)";
@@ -1224,7 +1181,7 @@ function uploadSave() {
               document.getElementById("dark").style.color = "orange";
               colorMode = "light";
             }
-            if (line[35] == 1) {
+            if (value[35] == 1) {
               document.getElementById("easy").style.backgroundColor = "orange";
               document.getElementById("easy").style.color = "rgb(30,30,30)";
               document.getElementById("normal").style.backgroundColor =
@@ -1233,7 +1190,7 @@ function uploadSave() {
               document.getElementById("hard").style.backgroundColor =
                 "transparent";
               document.getElementById("hard").style.color = "orange";
-            } else if (line[35] == 2) {
+            } else if (value[35] == 2) {
               document.getElementById("normal").style.backgroundColor =
                 "orange";
               document.getElementById("normal").style.color = "rgb(30,30,30)";
@@ -1253,20 +1210,20 @@ function uploadSave() {
                 "transparent";
               document.getElementById("easy").style.color = "orange";
             }
-            clicks = parseInt(line[0]);
-            upgCost = parseInt(line[1]);
-            workerCost = parseInt(line[2]);
-            superWorkerCost = parseInt(line[3]);
-            farmCost = parseInt(line[4]);
-            multiplier = parseInt(line[5]);
-            workers = parseInt(line[6]);
-            superWorkers = parseInt(line[7]);
-            farms = parseInt(line[8]);
-            expPriceMultiplier = parseInt(line[9]);
-            expPriceWorker = parseInt(line[10]);
-            expPriceSuperWorker = parseInt(line[11]);
-            expPriceFarm = parseInt(line[12]);
-            achievements = parseInt(line[13]);
+            clicks = unBin(value[0]);
+            upgCost = unBin(value[1]);
+            workerCost = unBin(value[2]);
+            superWorkerCost = unBin(value[3]);
+            farmCost = unBin(value[4]);
+            multiplier = unBin(value[5]);
+            workers = unBin(value[6]);
+            superWorkers = unBin(value[7]);
+            farms = unBin(value[8]);
+            expPriceMultiplier = parseInt(value[9]);
+            expPriceWorker = parseInt(value[10]);
+            expPriceSuperWorker = parseInt(value[11]);
+            expPriceFarm = parseInt(value[12]);
+            achievements = unBin(value[13]);
           } catch {
             alert(
               "There was an error while converting the file into data for the game. This is most likely because the file may be old and not correctly formatted, or there is an error in the file."
@@ -1285,21 +1242,21 @@ function uploadSave() {
 
 function attack() {
   if (!battling) {
-  if (confirm("Are you sure you want to start an attack?")) {
-    document.getElementById("shop").style.display = "none";
-    document.getElementById("banana").style.display = "none";
-    document.getElementById("clickCounter").style.display = "none";
-    document.getElementById("divider2").style.display = "none";
-    document.getElementById("settingsMenu").style.display = "none";
-    document.getElementById("achTrackerMenu").style.display = "none";
-    document.getElementById("divider4").style.display = "none";
-    document.getElementById("divider2").style.display = "none";
-    document.getElementById("patchNotesMenu").style.display = "none";
-    document.getElementById("attackMenu").style.display = "block";
-    battling = true;
-  } else {
-    return;
-  }
+    if (confirm("Are you sure you want to start an attack?")) {
+      document.getElementById("shop").style.display = "none";
+      document.getElementById("banana").style.display = "none";
+      document.getElementById("clickCounter").style.display = "none";
+      document.getElementById("divider2").style.display = "none";
+      document.getElementById("settingsMenu").style.display = "none";
+      document.getElementById("achTrackerMenu").style.display = "none";
+      document.getElementById("divider4").style.display = "none";
+      document.getElementById("divider2").style.display = "none";
+      document.getElementById("patchNotesMenu").style.display = "none";
+      document.getElementById("attackMenu").style.display = "block";
+      battling = true;
+    } else {
+      return;
+    }
   }
 }
 
@@ -1369,7 +1326,10 @@ function attackBet() {
   }
   document.getElementById("attackMenu").style.display = "none";
   document.getElementById("attackDialogue").style.display = "block";
+  document.getElementById("generatingOpponent").style.display = "block";
+  document.getElementById("startingBattle").style.display = "none";
   document.getElementById("generatingOpponent").style.opacity = 0;
+
   var opacity1 = 0;
   var interval1 = setInterval(() => {
     if (opacity1 < 1) {
@@ -1535,43 +1495,43 @@ function endGame() {
       win = null;
       opponentScore = battleScore;
     }
-  } else if (battleScore > 18) {
+  } else if (battleScore > 17) {
     var randomNum = Math.round(random(0, 100));
     if (randomNum < 55) {
       win = true;
       opponentScore = battleScore - Math.round(random(1, 3));
     } else {
       win = false;
-      opponentScore = battleScore + Math.round(random(1, 2));
+      opponentScore = battleScore + 1;
     }
-  } else if (battleScore > 15) {
+  } else if (battleScore > 14) {
     var randomNum = Math.round(random(0, 100));
     if (randomNum < 40) {
       win = true;
       opponentScore = battleScore - Math.round(random(1, 3));
     } else {
       win = false;
-      opponentScore = battleScore + Math.round(random(1, 5));
+      opponentScore = battleScore + Math.round(random(1, 3));
     }
-  } else if (battleScore > 13) {
+  } else if (battleScore > 12) {
     var randomNum = Math.round(random(0, 100));
     if (randomNum < 25) {
       win = true;
       opponentScore = battleScore - Math.round(random(1, 3));
     } else {
       win = false;
-      opponentScore = battleScore + Math.round(random(1, 7));
+      opponentScore = battleScore + Math.round(random(1, 6));
     }
-  } else if (battleScore > 10) {
+  } else if (battleScore > 9) {
     var randomNum = Math.round(random(0, 100));
     if (randomNum < 10) {
       win = true;
       opponentScore = battleScore - Math.round(random(1, 3));
     } else {
       win = false;
-      opponentScore = battleScore + Math.round(random(1, 10));
+      opponentScore = battleScore + Math.round(random(1, 8));
     }
-  } else if (battleScore < 10) {
+  } else if (battleScore <= 9) {
     var randomNum = Math.round(random(0, 100));
     if (randomNum == 1) {
       win = true;
