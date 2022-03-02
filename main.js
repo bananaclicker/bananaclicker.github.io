@@ -91,9 +91,22 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+function repeat(func, times, interval = 1) {
+  var i = times;
+  setInterval(() => {
+    if (i > 0) {
+      func();
+      i--;
+    }
+  }, interval)
+
+repeat(() => {
+  console.log("this will repeat 5 times")
+}, 5);
+  
 setInterval(() => {
   newBundle();
-}, 90000);
+}, 120000);
 
 function ach(title, reward) {
   if (achSlot1 == true) {
