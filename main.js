@@ -91,19 +91,24 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function repeat(func, times, interval = 1) {
-  var i = times;
-  setInterval(() => {
-    if (i > 0) {
-      func();
-      i--;
-    }
-  }, interval)
+function Bin(number) {
+  return number.toString(2);
+}
 
-repeat(() => {
-  console.log("this will repeat 5 times")
-}, 5);
-  
+function unBin(str) {
+  return parseInt(str, 2);
+}
+
+function boolBin(bool) {
+  if (!bool) return "0";
+  else return "1";
+}
+
+function boolUnBin(str) {
+  if (str == "0") return false;
+  else return true;
+}
+
 setInterval(() => {
   newBundle();
 }, 120000);
@@ -496,68 +501,108 @@ setInterval(() => {
     }
     if (a.banana1 == true) {
       document.getElementById("banana1").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("banana1").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.banana2 == true) {
       document.getElementById("banana2").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("banana2").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.banana3 == true) {
       document.getElementById("banana3").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("banana3").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.banana4 == true) {
       document.getElementById("banana4").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("banana4").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.multiplier1 == true) {
       document.getElementById("multiplier1").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("multiplier1").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.multiplier2 == true) {
       document.getElementById("multiplier2").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("multiplier2").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.multiplier3 == true) {
       document.getElementById("multiplier3").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("multiplier3").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.multiplier4 == true) {
       document.getElementById("multiplier4").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("multiplier4").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.workers1 == true) {
       document.getElementById("workers1").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("workers1").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.workers2 == true) {
       document.getElementById("workers2").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("workers2").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.workers3 == true) {
       document.getElementById("workers3").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("workers3").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.workers4 == true) {
       document.getElementById("workers4").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("workers4").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.superWorkers1 == true) {
       document.getElementById("superWorkers1").style.border =
         "4px solid orange";
-    }
+    } else
+      document.getElementById("superWorkers1").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.superWorkers2 == true) {
       document.getElementById("superWorkers2").style.border =
         "4px solid orange";
-    }
+    } else
+      document.getElementById("superWorkers2").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.superWorkers3 == true) {
       document.getElementById("superWorkers3").style.border =
         "4px solid orange";
-    }
+    } else
+      document.getElementById("superWorkers3").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.superWorkers4 == true) {
       document.getElementById("superWorkers4").style.border =
         "4px solid orange";
-    }
+    } else
+      document.getElementById("superWorkers4").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.farms1 == true) {
       document.getElementById("farms1").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("farms1").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.farms2 == true) {
       document.getElementById("farms2").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("farms2").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.farms3 == true) {
       document.getElementById("farms3").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("farms3").style.border =
+        "4px solid rgb(60,60,60)";
     if (a.farms4 == true) {
       document.getElementById("farms4").style.border = "4px solid orange";
-    }
+    } else
+      document.getElementById("farms4").style.border =
+        "4px solid rgb(60,60,60)";
   }
 });
 
@@ -1007,14 +1052,6 @@ function darkMode() {
   colorMode = "dark";
 }
 
-function Bin(number) {
-  return number.toString(2);
-}
-
-function unBin(str) {
-  return parseInt(str, 2);
-}
-
 function downloadSave() {
   if (!battling) {
     var data =
@@ -1046,45 +1083,45 @@ function downloadSave() {
       "O" +
       Bin(achievements) +
       "O" +
-      a.banana1 +
+      boolBin(a.banana1) +
       "O" +
-      a.banana2 +
+      boolBin(a.banana2) +
       "O" +
-      a.banana3 +
+      boolBin(a.banana3) +
       "O" +
-      a.banana4 +
+      boolBin(a.banana4) +
       "O" +
-      a.multiplier1 +
+      boolBin(a.multiplier1) +
       "O" +
-      a.multiplier2 +
+      boolBin(a.multiplier2) +
       "O" +
-      a.multiplier3 +
+      boolBin(a.multiplier3) +
       "O" +
-      a.multiplier4 +
+      boolBin(a.multiplier4) +
       "O" +
-      a.workers1 +
+      boolBin(a.workers1) +
       "O" +
-      a.workers2 +
+      boolBin(a.workers2) +
       "O" +
-      a.workers3 +
+      boolBin(a.workers3) +
       "O" +
-      a.workers4 +
+      boolBin(a.workers4) +
       "O" +
-      a.superWorkers1 +
+      boolBin(a.superWorkers1) +
       "O" +
-      a.superWorkers2 +
+      boolBin(a.superWorkers2) +
       "O" +
-      a.superWorkers3 +
+      boolBin(a.superWorkers3) +
       "O" +
-      a.superWorkers4 +
+      boolBin(a.superWorkers4) +
       "O" +
-      a.farms1 +
+      boolBin(a.farms1) +
       "O" +
-      a.farms2 +
+      boolBin(a.farms2) +
       "O" +
-      a.farms3 +
+      boolBin(a.farms3) +
       "O" +
-      a.farms4 +
+      boolBin(a.farms4) +
       "O" +
       colorMode +
       "O" +
@@ -1118,46 +1155,26 @@ function uploadSave() {
         reader.onload = () => {
           const value = reader.result.split("O");
           try {
-            if (value[14] == "false") a.banana1 = false;
-            else a.banana1 = true;
-            if (value[15] == "false") a.banana2 = false;
-            else a.banana2 = true;
-            if (value[16] == "false") a.banana3 = false;
-            else a.banana3 = true;
-            if (value[17] == "false") a.banana4 = false;
-            else a.banana4 = true;
-            if (value[18] == "false") a.multiplier1 = false;
-            else a.multiplier1 = true;
-            if (value[19] == "false") a.multiplier2 = false;
-            else a.multiplier2 = true;
-            if (value[20] == "false") a.multiplier3 = false;
-            else a.multiplier3 = true;
-            if (value[21] == "false") a.multiplier4 = false;
-            else a.multiplier4 = true;
-            if (value[22] == "false") a.workers1 = false;
-            else a.workers1 = true;
-            if (value[23] == "false") a.workers2 = false;
-            else a.workers2 = true;
-            if (value[24] == "false") a.workers3 = false;
-            else a.workers3 = true;
-            if (value[25] == "false") a.workers4 = false;
-            else a.workers4 = true;
-            if (value[26] == "false") a.superWorkers1 = false;
-            else a.superWorkers1 = true;
-            if (value[27] == "false") a.superWorkers2 = false;
-            else a.superWorkers2 = true;
-            if (value[28] == "false") a.superWorkers3 = false;
-            else a.superWorkers3 = true;
-            if (value[29] == "false") a.superWorkers4 = false;
-            else a.superWorkers4 = true;
-            if (value[30] == "false") a.farms1 = false;
-            else a.farms1 = true;
-            if (value[31] == "false") a.farms2 = false;
-            else a.farms2 = true;
-            if (value[32] == "false") a.farms3 = false;
-            else a.farms3 = true;
-            if (value[33] == "false") a.farms4 = false;
-            else a.farms4 = true;
+            a.banana1 = boolUnBin(value[14]);
+            a.banana2 = boolUnBin(value[15]);
+            a.banana3 = boolUnBin(value[16]);
+            a.banana4 = boolUnBin(value[17]);
+            a.multiplier1 = boolUnBin(value[18]);
+            a.multiplier2 = boolUnBin(value[19]);
+            a.multiplier3 = boolUnBin(value[20]);
+            a.multiplier4 = boolUnBin(value[21]);
+            a.workers1 = boolUnBin(value[22]);
+            a.workers2 = boolUnBin(value[23]);
+            a.workers3 = boolUnBin(value[24]);
+            a.workers4 = boolUnBin(value[25]);
+            a.superWorkers1 = boolUnBin(value[26]);
+            a.superWorkers2 = boolUnBin(value[27]);
+            a.superWorkers3 = boolUnBin(value[28]);
+            a.superWorkers4 = boolUnBin(value[29]);
+            a.farms1 = boolUnBin(value[30]);
+            a.farms2 = boolUnBin(value[31]);
+            a.farms3 = boolUnBin(value[32]);
+            a.farms4 = boolUnBin(value[33]);
 
             if (value[34] == "dark") {
               document.getElementById("stylesheet").href = "darkmode.css";
