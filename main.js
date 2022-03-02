@@ -1109,58 +1109,40 @@ function uploadSave() {
             else a.banana1 = true;
             if (value[15] == "false") a.banana2 = false;
             else a.banana2 = true;
-
             if (value[16] == "false") a.banana3 = false;
             else a.banana3 = true;
-
             if (value[17] == "false") a.banana4 = false;
             else a.banana4 = true;
-
             if (value[18] == "false") a.multiplier1 = false;
             else a.multiplier1 = true;
-
             if (value[19] == "false") a.multiplier2 = false;
             else a.multiplier2 = true;
-
             if (value[20] == "false") a.multiplier3 = false;
             else a.multiplier3 = true;
-
             if (value[21] == "false") a.multiplier4 = false;
             else a.multiplier4 = true;
-
             if (value[22] == "false") a.workers1 = false;
             else a.workers1 = true;
-
             if (value[23] == "false") a.workers2 = false;
             else a.workers2 = true;
-
             if (value[24] == "false") a.workers3 = false;
             else a.workers3 = true;
-
             if (value[25] == "false") a.workers4 = false;
             else a.workers4 = true;
-
             if (value[26] == "false") a.superWorkers1 = false;
             else a.superWorkers1 = true;
-
             if (value[27] == "false") a.superWorkers2 = false;
             else a.superWorkers2 = true;
-
             if (value[28] == "false") a.superWorkers3 = false;
             else a.superWorkers3 = true;
-
             if (value[29] == "false") a.superWorkers4 = false;
             else a.superWorkers4 = true;
-
             if (value[30] == "false") a.farms1 = false;
             else a.farms1 = true;
-
             if (value[31] == "false") a.farms2 = false;
             else a.farms2 = true;
-
             if (value[32] == "false") a.farms3 = false;
             else a.farms3 = true;
-
             if (value[33] == "false") a.farms4 = false;
             else a.farms4 = true;
 
