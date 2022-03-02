@@ -4,11 +4,11 @@
 * {
   margin-left: 0;
   margin-right: 0;
+  user-select: none;
 }
 body {
   background-color: rgb(30, 30, 30);
   font-size: 25px;
-  user-select: none;
   overflow-x: hidden;
 }
 
