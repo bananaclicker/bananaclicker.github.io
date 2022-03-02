@@ -479,7 +479,7 @@ img.node {
   display: none;
 }
 #achievement {
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 90px;
   background: rgb(30, 30, 30);
@@ -493,7 +493,7 @@ img.node {
   z-index: 1;
 }
 #achievement2 {
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 90px;
   background: rgb(30, 30, 30);
@@ -507,7 +507,7 @@ img.node {
   z-index: 1;
 }
 #achievement3 {
-  position: absolute;
+  position: fixed;
   width: 300px;
   height: 90px;
   background: rgb(30, 30, 30);
