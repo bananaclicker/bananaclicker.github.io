@@ -109,6 +109,22 @@ function boolUnBin(str) {
   else return true;
 }
 
+function Repeat(func, times, interval = null) {
+  if (interval == null) {
+    for (let i = 0; i < times; i++) {
+      func();
+    }
+  } else {
+    var timesRan = 0;
+    setInterval(() => {
+      if (timesRan < times) {
+        func();
+        timesRan++;
+      } else clearInterval();
+    }, interval);
+  }
+}
+
 setInterval(() => {
   newBundle();
 }, 120000);
@@ -726,13 +742,13 @@ function spendAnimation(price) {
 }
 
 function newBundle() {
-  var value = random(2, 4);
-  bundle.multipliers = Math.round(random(multiplier / 100, multiplier / 50));
-  bundle.workers = Math.round(random(workers / 100, workers / 50));
+  var value = random(1.5, 3.5);
+  bundle.multipliers = Math.round(random(multiplier / 50, multiplier / 25));
+  bundle.workers = Math.round(random(workers / 50, workers / 25));
   bundle.superWorkers = Math.round(
-    random(superWorkers / 100, superWorkers / 50)
+    random(superWorkers / 50, superWorkers / 25)
   );
-  bundle.farms = Math.round(random(farms / 100, farms / 50));
+  bundle.farms = Math.round(random(farms / 50, farms / 25));
   if (
     bundle.multipliers == 0 &&
     bundle.workers == 0 &&
@@ -745,22 +761,22 @@ function newBundle() {
     bundleAvailable = true;
     if (bundle.multipliers != 0) {
       document.getElementById("bundleItems").innerHTML +=
-        "<br>Multiplier: +" + bundle.multipliers + "x";
+        "<br><small>Multiplier: +" + bundle.multipliers + "x</small>";
       bundle.cost += bundle.multipliers * upgCost;
     }
     if (bundle.workers != 0) {
       document.getElementById("bundleItems").innerHTML +=
-        "<br>Workers: +" + bundle.workers;
+        "<br><small>Workers: +" + bundle.workers + "</small>";
       bundle.cost += bundle.workers * workerCost;
     }
     if (bundle.superWorkers != 0) {
       document.getElementById("bundleItems").innerHTML +=
-        "<br>Super Workers: +" + bundle.superWorkers;
+        "<br><small>Super Workers: +" + bundle.superWorkers + "</small>";
       bundle.cost += bundle.superWorkers * superWorkerCost;
     }
     if (bundle.farms != 0) {
       document.getElementById("bundleItems").innerHTML +=
-        "<br>Farms: +" + bundle.farms;
+        "<br><small>Farms: +" + bundle.farms + "</small>";
       bundle.cost += bundle.farms * farmCost;
     }
     bundle.cost /= value;
@@ -772,10 +788,18 @@ function buyBundle() {
   if (paused == false) {
     if (clicks >= bundle.cost && bundleAvailable == true) {
       clicks -= bundle.cost;
-      multiplier += bundle.multipliers;
-      workers += bundle.workers;
-      superWorkers += bundle.superWorkers;
-      farms += bundle.farms;
+      Repeat(() => {
+        freeUpgrade();
+      }, bundle.multipliers);
+      Repeat(() => {
+        freeWorker();
+      }, bundle.workers);
+      Repeat(() => {
+        freeSuperWorker();
+      }, bundle.superWorkers);
+      Repeat(() => {
+        freeFarm();
+      }, bundle.farms);
       spendAnimation(bundle.cost);
       bundle.cost = 0;
       document.getElementById("bundleItems").innerHTML =
@@ -1175,7 +1199,6 @@ function uploadSave() {
             a.farms2 = boolUnBin(value[31]);
             a.farms3 = boolUnBin(value[32]);
             a.farms4 = boolUnBin(value[33]);
-
             if (value[34] == "dark") {
               document.getElementById("stylesheet").href = "darkmode.css";
               document.getElementById("dark").style.backgroundColor = "orange";
