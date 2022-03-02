@@ -752,7 +752,7 @@ function pause() {
 
 function help() {
   alert(
-    "Click on the banana to gain more bananas. Obtain upgrades from the shop. Prices have slight exponential increases as you Obtain more items. The multiplier is fully effective on clicks, while much weaker on workers and farms."
+    "Click on the big banana to gain bananas, the main currency. Purchase upgrades from the shop. Bundles are a special shop item that appear every 2 minutes and have rewards and prices based on what you have now. Save a file using the download button at the top right of the screen, and upload that same file later to resume progress. To view achievements, press the star icon on the top right of the screen. You will be notified when you recieve an achievement. Change settings with the cog on the top right of the screen. View patch notes with the icon next to the help icon on the top left of the screen. Once you have 100K bananas, battles are unlocked, which you can use by pressing the button that will appear to the left of the download button. Battles are an aim trainer like game against an AI opponent. You can place your bets before a battle, and you either gain or lose these bets based on how you did in the battle."
   );
 }
 
